@@ -1,0 +1,56 @@
+\title{\vspace{-3cm}Introduction to Monte Carlo Simulation using Python}
+\author{
+	Peter Crowther, Joshua Robinson and C. Patrick Royall \\
+	HH Wills Physics Laboratory, Bristol
+}
+\date{\today}
+
+\documentclass[12pt, a4paper]{article}
+\usepackage{listings}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+\lstset{style=mystyle}
+\newcounter{task}
+\newenvironment{task}[1][]{\refstepcounter{task}\par\bfseries{Task~\thetask. #1}}{\par}
+
+\begin{document}
+\maketitle
+
+\input{chapters/pre_intro}
+
+\input{chapters/intro_to_python}
+
+\input{chapters/monte_carlo_methods}
+
+\newpage
+\input{chapters/appendicies}
+
+
+\end{document}

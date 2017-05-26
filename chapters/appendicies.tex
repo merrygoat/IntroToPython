@@ -1,0 +1,36 @@
+\appendix
+\section{Stochastic determination of pi hints}\label{app:pi_hints}
+	\subsection{Hint 1}
+		Try writing out an algorithm in pseudocode. This means writing out a series of logical steps in simple words first without worrying about the exact programming syntax. For a simple loop this might look something like:
+
+		\begin{lstlisting}
+import needed_libraries
+
+total = 0
+
+for loop from 1 to 10
+	add loop value to my total
+print the total to the screen\end{lstlisting}
+
+		Once you have got the basic program flow sorted, you can then convert your pseudocode to valid Python.
+
+	\subsection{Hint 2}
+		This is a basic pseudocode example of the algorithm.
+
+		\begin{lstlisting}
+import needed_libraries
+
+num_inside=0
+num_interations = 1000
+x_coord = 0
+y_coord = 0
+
+for loop from 0 to numiterations
+	set x_coord using random number
+	set y_coord using random number
+	check distance of random coord from center
+	if distance <= 1 then
+		increment num_inside by 1
+
+my_pi = 4* ratio of inside to outside
+print my_pi\end{lstlisting}
