@@ -5,3 +5,4 @@ Thumbs.db
 *.gz
 *.out
 *.aux
+*.log
