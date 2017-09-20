@@ -18,7 +18,7 @@ Division in Python 3 gives a decimal answer as you would expect.
 		\begin{verbatim}> 8\end{verbatim}
 
 	\subsection{Variables}\label{types}
-		We can store values in variables. You can think of these as "buckets" which hold values. You can call variables anything you like as long as it doesn't start with a number. In addition it is a very poor idea to use variable names that are reserved keywords elsewhere in Python such as "print", "sum" or "list". 
+		We can store values in variables. You can think of these as "buckets" which hold values. You can call variables anything you like as long as it doesn't start with a number. In addition it is a bad idea to use variable names that are reserved keywords elsewhere in Python such as "print", "sum" or "list". 
 		\begin{lstlisting}[language=Python]
 a = 6 + 3
 print(a)
@@ -55,7 +55,7 @@ print(song)\end{lstlisting}
 		\end{verbatim}
 
 	\subsection{Lists}
-	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. You can give lists any name you like as long as it isn't a reserved command (like print).
+	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. Lists are just another type of variable, so as before you can name them anything you like as long as it doesn't start with a number or is a reserved command (like print).
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 5]
 print(numberlist)\end{lstlisting}
@@ -82,10 +82,10 @@ print(numberlist)	\end{lstlisting}
 person_name = input("What is your name?")
 print("Hello " + person_name)\end{lstlisting}
 		\begin{verbatim}> Hello Arthur Pewty\end{verbatim}
-		Note that the input function always interprets the users input as text. This means that if the input needs to be interpreted as a number then it should be converted explicitly to an integer or float using int() or float()
+		Note that the input function always interprets the user's input as text. This means that if the input needs to be interpreted as a number then it should be converted explicitly to an integer or float using int() or float()
 		\begin{lstlisting}[language=Python]
 user_input_number = float(input("Enter a number of years: "))
-print("Two more than your number is: ", userinoutnumber+2)\end{lstlisting}
+print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 		\begin{verbatim}> Two more than your number is: 42\end{verbatim}
 
 	\subsection{Flow control using if}
@@ -100,9 +100,9 @@ else:
 	print(a, " is not less than 10.")
 print("This is printed regardless of the value of a")\end{lstlisting}
 		\begin{verbatim}> 4 is less than 10.\end{verbatim}	
-		Note how the program flow is controlled by the indentation. Only the indented if statement that is true is printed. Since it is outside of the if statement, the last sentence is always printed.
+		Note how the program flow is controlled by the indentation. Only the indented if statement that is true is printed.The last sentence is always printed, since it is outside of the if statement.
 		
-		If you recall the types in section \ref{types}, you will notice that that the "print" function seems happy to combine a numeric and string type. This is because "print" is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
+		If you recall the discussion of types in section \ref{types}, you will notice that that the "print" function seems happy to combine a numeric and string type. This is because "print" is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
 		
 		More complex questions can be asked by asking multiple times using the elif statement. The elif statement only executes if the previous statements have been false
 		\begin{lstlisting}[language=Python]
@@ -117,7 +117,7 @@ elif num_penguins == 10:
 else:
 	print("This statement should never be printed")\end{lstlisting}
 		\begin{verbatim}> That is quite a lot of penguins\end{verbatim}
-		It is important to understand the distinction between comparions and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a veriable while the comparison operator is asking whether two values are equal.
+		It is important to understand the distinction between comparions and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
 		\begin{task}What happens if you change num\_penguins?\end{task}
 		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relvent message depending on whether or not they are equal.\end{task}
 
@@ -140,7 +140,7 @@ for loop_number in range(3, 7):
 print(list_of_numbers)\end{lstlisting}
 \begin{verbatim}> [3, 4, 5, 6]\end{verbatim}
 
-Note how the bounds of the range command work. The first value (3) is printed but not the last value (7).
+Note how the bounds of the range command work. As for list subscripting, the first value (3) is printed but not the last value (7).
 
 
 
@@ -177,10 +177,11 @@ print ("Your random number is: ", random())\end{lstlisting}
 		
 		The random function prints a random decimal number between 0 and 1.
 		\begin{task}Write a for loop that will print out a random number between 0 and 5, 5 times.\end{task}
-		
+		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}		
+
 	\subsection{Histograms}
 		
-		There is a very powerful package called matplotlib that will allow us to draw graphs.
+		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much mire customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
 		\begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -190,9 +191,32 @@ plt.hist(listofnumbers, bins=[0, 1, 2, 3, 4, 5, 6, 7])
 plt.show()\end{lstlisting}
 		\includegraphics[scale=0.5]{images/histogram}
 
-		First we import the matplotlib library, then the command "\%matplotlib inline" tells ipython to plot the graphs in the workbook. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
+		First we import the matplotlib library, then the command "\%matplotlib inline" tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
 		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
 		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
+
+	\subsection{Line Graphs}
+		Line graphs are very similar
+		\begin{lstlisting}[language=Python]
+x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
+y_data=[58, 68, 65, 71, 78, 81, 78 ]
+plt.plot(x_data, y_data, linestyle = "-", markerstyle = "x", markersize=10, linewidth=2)
+plt.title("Confuse-a-cat sucess rate")
+plt.xlabel("Year")
+plt.ylabel("Percentage of cats confused")
+plt.savefig("confuseacat.pdf")
+plt.show()\end{lstlisting}
+
+You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}
+\begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like "matplotlib axis range example" to find the correct syntax.\end{task}
+Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.
+
+	\subsection{Importing Data}
+		We don't want to have to type data into the python script every time we want to make a graph. Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. This can be easily read by Python.
+		\begin{lstlisting}[language=Python]
+x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
+plt.plot(x_data, y_data)
+plt.show()\end{lstlisting}
 
 \section{Stochastic modelling}
 	\subsection{Calculation of pi}
