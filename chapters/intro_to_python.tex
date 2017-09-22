@@ -18,7 +18,7 @@ Division in Python 3 gives a decimal answer as you would expect.
 		\begin{verbatim}> 8\end{verbatim}
 
 	\subsection{Variables}\label{types}
-		We can store values in variables. You can think of these as "buckets" which hold values. You can call variables anything you like as long as it doesn't start with a number. In addition it is a bad idea to use variable names that are reserved keywords elsewhere in Python such as "print", "sum" or "list". 
+		We can store values in variables. You can think of these as ``buckets'' which hold values. You can call variables anything you like as long as it doesn't start with a number. In addition it is a bad idea to use variable names that are reserved keywords elsewhere in Python such as \texttt{print}, \texttt{sum} or \texttt{list}. 
 		\begin{lstlisting}[language=Python]
 a = 6 + 3
 print(a)
@@ -88,8 +88,9 @@ user_input_number = float(input("Enter a number of years: "))
 print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 		\begin{verbatim}> Two more than your number is: 42\end{verbatim}
 
-	\subsection{Flow control using if}
-		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values then this can make them much more powerful. The "if" statement is the most simple of these flow control tools.
+	\subsection{Flow control}
+		\subsubsection{If statements}
+		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values then this can make them much more powerful. The \texttt{if}' statement is the most simple of these flow control tools.
 		
 		\begin{lstlisting}[language=Python]
 a = 4
@@ -102,7 +103,7 @@ print("This is printed regardless of the value of a")\end{lstlisting}
 		\begin{verbatim}> 4 is less than 10.\end{verbatim}	
 		Note how the program flow is controlled by the indentation. Only the indented if statement that is true is printed.The last sentence is always printed, since it is outside of the if statement.
 		
-		If you recall the discussion of types in section \ref{types}, you will notice that that the "print" function seems happy to combine a numeric and string type. This is because "print" is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
+		If you recall the discussion of types in section \ref{types}, you will notice that that the \texttt{print} function seems happy to combine a numeric and string type. This is because \texttt{print} is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
 		
 		More complex questions can be asked by asking multiple times using the elif statement. The elif statement only executes if the previous statements have been false
 		\begin{lstlisting}[language=Python]
@@ -122,7 +123,7 @@ else:
 		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relvent message depending on whether or not they are equal.\end{task}
 
 
-	\subsection{Loops}
+		\subsubsection{For loops}
 		For loops are a flow control tool that can be used to repeat a command multiple times.
 		\begin{lstlisting}[language=Python]
 list_of_numbers = []
@@ -142,9 +143,7 @@ print(list_of_numbers)\end{lstlisting}
 
 Note how the bounds of the range command work. As for list subscripting, the first value (3) is printed but not the last value (7).
 
-
-
-	\subsection{Flow control using while}
+		\subsubsection{While loops}
 		Sometimes it is useful to have a conditional loop. A while loop, repeats a process untill a condition is met.
 \begin{lstlisting}[language=Python]
 
@@ -164,10 +163,8 @@ print("Yes, that's it.")\end{lstlisting}
 		The comparison operator != checks whether something is not equal. While the two values are not equal the loop will repeat. As soon as they are equal, the loop will exit and the next command will be printed.
 
 
-
-
 	\subsection{Imports}
-		Sometimes we want functions from another package that are not included in the basic Python set of functions. We can import these packages. Here we import the function "random" from the package "random" and then use it.
+		Sometimes we want functions from another package that are not included in the basic Python set of functions. We can import these packages. Here we import the function \texttt{random} from the package \texttt{random} and then use it.
 		\begin{lstlisting}[language=Python]
 from random import random
 
@@ -179,77 +176,8 @@ print ("Your random number is: ", random())\end{lstlisting}
 		\begin{task}Write a for loop that will print out a random number between 0 and 5, 5 times.\end{task}
 		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}		
 
-	\subsection{Histograms}
-		
-		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much mire customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
-		\begin{lstlisting}[language=Python]
-import matplotlib.pyplot as plt
-%matplotlib inline
-
-listofnumbers=[0.2, 0.3, 0.4, 1.2, 1.7, 1.9, 2.2, 2.5, 3.1, 3.4, 4.6, 5.1, 5.6, 6.0, 7.4, 7.4, 7.6]
-plt.hist(listofnumbers, bins=[0, 1, 2, 3, 4, 5, 6, 7])
-plt.show()\end{lstlisting}
-		\includegraphics[scale=0.5]{images/histogram}
-
-		First we import the matplotlib library, then the command "\%matplotlib inline" tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
-		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
-		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
-
-	\subsection{Line Graphs}
-		Line graphs are very similar
-		\begin{lstlisting}[language=Python]
-x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
-y_data=[58, 68, 65, 71, 78, 81, 78 ]
-plt.plot(x_data, y_data, linestyle = "-", markerstyle = "x", markersize=10, linewidth=2)
-plt.title("Confuse-a-cat sucess rate")
-plt.xlabel("Year")
-plt.ylabel("Percentage of cats confused")
-plt.savefig("confuseacat.pdf")
-plt.show()\end{lstlisting}
-
-You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}
-\begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like "matplotlib axis range example" to find the correct syntax.\end{task}
-Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.
-
-	\subsection{Importing Data}
-		We don't want to have to type data into the python script every time we want to make a graph. Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. This can be easily read by Python.
-		\begin{lstlisting}[language=Python]
-x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
-plt.plot(x_data, y_data)
-plt.show()\end{lstlisting}
-
-\section{Stochastic modelling}
-	\subsection{Calculation of pi}
-		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of area of an inscribed circle of a square to the area of the square as shown in Fig. \ref{fig:picircle}. 
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.4]{images/pi}
-		\caption{The blue circle is inscribed in the black dashed square.}
-		\label{fig:picircle}
-	\end{figure}
-
-	If we pick a series of random points inside the square then some will fall inside the circle and some will fall outside. The ratio of these two quantities will tell us the relative areas of the two shapes. From this it follows that we can calculate pi using this method.
-
-	How can we tell if a random point is inside the circle or not? Pythagorus' theorem tells us the hypotenuse of a right angled triangle. For a circle radius 1 we know that a point is inside the circle if:
-
-	\begin{equation}
-	\sqrt{a^2+b^2} <- 1,
-	\end{equation}
-
-	where $a$ and $b$ are the side lengths of the triangle. Since the circle is symmetric, we don't need the whole thing, just a quarter will do. This makes the generation of random numbers easier since we can generate numbers between 0 and 1 to put random coordinates inside a box of side length 1. This scheme is shown in Fig. \ref{fig:piarc}
-
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.6]{images/piarc}
-		\caption{If we pick random points on the figure some will fall outside the circle and some inside. The ratio of the two allows us to find pi.}
-		\label{fig:piarc}
-	\end{figure}
-
-	\begin{task}Using all of the above techniques, calculate pi using random numbers. Try using 100, 1000, 10,000 or more random samples, how does this affect the error? If you calculate pi 1000 times and plot a histogram of these values, what sort of distribution would you expect the values to follow and why? What is the nature of the relationship between number of samples and distribution width?\end{task}
-	If you find this task too hard, there are some hints in Appendix \ref{app:pi_hints}. Try not to look at them unless you are really stuck. Learning (of programming in particular) works much better if you got through the process of problem solving rather than just reading the answer. The hints in Appendix \ref{app:pi_hints} are graded in terms of difficulty. The first hint gives you a little help and the subsequent hints more help.
-
-		\subsection{Subroutines}
-			Now you have a slightly larger program it can be convenient to split it up into smaller subsections. This makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called" from elsewhere. While not exactly synonymous, this document uses the words \textit{function} and \textit{subroutine} interchangeably.
+	\subsection{Subroutines}
+			Python has many built in functions like \texttt{input}, and \texttt{random}, you can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split them up into smaller subsections, this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
 			\begin{lstlisting}[language=Python]
 def hungarian_phrasebook():
 	print("My hovercraft is full of eels.")
@@ -260,7 +188,7 @@ for i in range(0, 2):
 			> My hovercraft is full of eels
 			\end{verbatim}
 
-While this does break up the code somewhat, the function is not very useful since it does exactly the same thing each time. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the function called a parameter. 			
+While this does break up the code somewhat, the function is not very useful since it does exactly the same thing each time. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the function called an argument.
 
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -270,8 +198,8 @@ adding_six(3)
 adding_six(14)\end{lstlisting}
 			\begin{verbatim}> 9
 				> 20\end{verbatim}
-				
-				It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines.
+
+				Here we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines.
 				
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -285,7 +213,7 @@ main()\end{lstlisting}
 			\begin{verbatim}> 6
 				> 7\end{verbatim}
 				
-				Functions don't just have to print values. They can do some processing and then return the value to the main loop using the "return" command.
+				Subroutines don't just have to print values. They can do some processing and then return the value to the main loop using the \texttt{return} command.
 
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -302,7 +230,7 @@ main()\end{lstlisting}
 
 			\begin{verbatim}> [7, 8, 9, 10]\end{verbatim}
 			
-			We pass each value of "number\_list" into the subroutine "adding\_six" which adds six and then returns the value to be put back into "number\_list". Note the use of the "len()" function inside the range function. "len()" returns the number of elements in a list, in this case in combination with "range" it is an easy way to iterate through the whole list.
+			We pass each value of \texttt{number\_list} into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into \texttt{number\_list}. Note the use of the \texttt{len} function inside the range function. \texttt{len} returns the number of elements in a list, in this case in combination with \texttt{range} it is an easy way to iterate through the whole list.
 				
 			\begin{task}Add subroutines to your code to split it up into sections.\end{task}
 
@@ -324,7 +252,11 @@ By importing the file \textit{analysis} in the first line, we can call any funct
 
 While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Note the comment in one of the functions. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids in understanding the function of a particular piece of code. Commenting code is another important coding habit. 
 
-\section{Speed, Efficiency and Numpy}
+
+\section{NumPy}
+	\subsection{NumPy arrays}
+
+	\subsection{Vectorisation}
 	Computers are fast but not infinitely fast. This means that while trivial calculations can be done using any method, more complex calculations such as simulations of hundreds or thousands of particles often need more care. Python is beautiful and easy to use but it is not the fastest programming language. This means that to do things like Monte-Carlo simulations we must take some consideration of the efficiency of the programming constructs that we use.
 
 	A very simple way to add 1 to each value in a list would be to step through the list and add 1 to each value.
@@ -375,7 +307,7 @@ print(short_np_array)\end{lstlisting}
 > [1 2 3 4 5]
 	\end{verbatim}
 
-	The numpy function "arange" generates a numpy array. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printied is that while Python lists have commas seperating the values, a numpy array doesn't. One of the big differences between lists and numpy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
+	The numpy function \texttt{arange} generates a numpy array. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printied is that while Python lists have commas seperating the values, a numpy array doesn't. One of the big differences between lists and numpy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
 
 	\begin{lstlisting}[language=Python]
 from time import time
@@ -393,10 +325,82 @@ print(end_time-start_time)\end{lstlisting}
 
 	Using numpy provides an impressive speedup of nearly 30 times for this simple operation. You will see use of the numpy library in the code you will use for the Monte Carlo simulations.
 
-\section{Running code outside of iPython}
+\section{Reading in data files}
+	\subsection{Numpy.loadtxt}
+		We don't want to have to type data into the python script every time we want to make a graph. Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. This can be easily read by Python.
+		\begin{lstlisting}[language=Python]
+x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
+plt.plot(x_data, y_data)
+plt.show()\end{lstlisting}
 
-	iPython is good for experimenting as you learn to build code but the normal distribution method for Python code is a simple text file. A Python script is stored as a plain text file with the ".py" file extension. To run such a Python script open a terminal or command prompt, navigate to the directory where the file is installed and type:
-	\begin{lstlisting}
-python3 filename.py\end{lstlisting}
-	
-	replacing \textit{filename.py} with the name of the script. This will directly run the file and the output will be printed to the screen.
+numpy.loadtxt is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
+
+Since numpy.loadtxt reads the data into a numpy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then numpy.genfromtxt is a more complex but filexible file reading function.
+
+
+
+\section{Matplotlib}
+	\subsection{Histograms}
+		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much mire customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
+		\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+listofnumbers=[0.2, 0.3, 0.4, 1.2, 1.7, 1.9, 2.2, 2.5, 3.1, 3.4, 4.6, 5.1, 5.6, 6.0, 7.4, 7.4, 7.6]
+plt.hist(listofnumbers, bins=[0, 1, 2, 3, 4, 5, 6, 7])
+plt.show()\end{lstlisting}
+		\includegraphics[scale=0.8]{images/histogram}
+
+		First we import the matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
+		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
+		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
+
+\section{Fitting Data}
+
+
+\section{Exercises}
+	\subsection{Calculation of pi}
+		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of area of an inscribed circle of a square to the area of the square as shown in Fig. \ref{fig:picircle}. 
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.4]{images/pi}
+		\caption{The blue circle is inscribed in the black dashed square.}
+		\label{fig:picircle}
+	\end{figure}
+
+	If we pick a series of random points inside the square then some will fall inside the circle and some will fall outside. The ratio of these two quantities will tell us the relative areas of the two shapes. From this it follows that we can calculate pi using this method.
+
+	How can we tell if a random point is inside the circle or not? Pythagorus' theorem tells us the hypotenuse of a right angled triangle. For a circle radius 1 we know that a point is inside the circle if:
+
+	\begin{equation}
+	\sqrt{a^2+b^2} <- 1,
+	\end{equation}
+
+	where $a$ and $b$ are the side lengths of the triangle. Since the circle is symmetric, we don't need the whole thing, just a quarter will do. This makes the generation of random numbers easier since we can generate numbers between 0 and 1 to put random coordinates inside a box of side length 1. This scheme is shown in Fig. \ref{fig:piarc}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[scale=0.6]{images/piarc}
+		\caption{If we pick random points on the figure some will fall outside the circle and some inside. The ratio of the two allows us to find pi.}
+		\label{fig:piarc}
+	\end{figure}
+
+	\begin{task}Using all of the above techniques, calculate pi using random numbers. Try using 100, 1000, 10,000 or more random samples, how does this affect the error? If you calculate pi 1000 times and plot a histogram of these values, what sort of distribution would you expect the values to follow and why? What is the nature of the relationship between number of samples and distribution width?\end{task}
+	If you find this task too hard, there are some hints in Appendix \ref{app:pi_hints}. Try not to look at them unless you are really stuck. Learning (of programming in particular) works much better if you got through the process of problem solving rather than just reading the answer. The hints in Appendix \ref{app:pi_hints} are graded in terms of difficulty. The first hint gives you a little help and the subsequent hints more help.
+
+	\subsection{Line Plots}
+		Line plots are very similar to histograms,z
+		\begin{lstlisting}[language=Python]
+x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
+y_data=[58, 68, 65, 71, 78, 81, 78 ]
+plt.plot(x_data, y_data, linestyle = "-", marker = "x", markersize=10, linewidth=2)
+plt.title("Confuse-a-cat sucess rate")
+plt.xlabel("Year")
+plt.ylabel("Percentage of cats confused")
+plt.savefig("confuseacat.pdf")
+plt.show()\end{lstlisting}
+		\includegraphics[scale=0.8]{images/confuseacat}
+
+You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives detials about the marker and line types and other things linke how to change the line and marker colours.
+\begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
+Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.

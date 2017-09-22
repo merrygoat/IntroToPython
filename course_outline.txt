@@ -1,0 +1,30 @@
+1)	Pre Session Preparation
+	a.	Installing Python
+2)	Basic Python Structures
+	a.	Basic Maths
+	b.	Variables
+	c.	Lists
+	d.	User Input
+	e.	Flow Control
+		i.	If statements
+		ii.	For loops
+		iii.	While loops
+	f.	Imports
+	g.	Subroutines
+3)	NumPy
+	a.	NumPy arrays [lists]
+		i.	NumPy array slicing [list slicing]
+		b.	Vectorisation [math operations]
+4)	Reading in Data files
+	a.	Open file 
+	b.	Np.loadtxt [numpy arrays]
+5)	Matplotlib
+	a.	Histograms
+	b.	Line Graphs [np.loadtxt]
+6)	Fitting data [np.loadtxt, numpy]
+	a.	Linear fits 
+	b.	More complex fits
+7)	Exercises
+	a.	Stochastic Calculation of Pi
+8)	Advanced Exercises 
+
