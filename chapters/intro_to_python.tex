@@ -177,7 +177,7 @@ print ("Your random number is: ", random())\end{lstlisting}
 		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}		
 
 	\subsection{Subroutines}
-			Python has many built in functions like \texttt{input}, and \texttt{random}, you can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split them up into smaller subsections, this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
+			Python has many built in functions like \texttt{input}, and \texttt{random}. You can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split the program up into smaller subsections, this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
 			\begin{lstlisting}[language=Python]
 def hungarian_phrasebook():
 	print("My hovercraft is full of eels.")
@@ -199,7 +199,7 @@ adding_six(14)\end{lstlisting}
 			\begin{verbatim}> 9
 				> 20\end{verbatim}
 
-				Here we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines.
+				Here on line 1 we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines. Note that you must remember to call main as seen in line 8. If you dont call main then Python will add all of the subroutines to its memory and then not run them and exit!
 				
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -222,7 +222,7 @@ def adding_six(input_value):
 def main():
 	number_list = [1, 2, 3, 4]
 	
-	for i in range(0, len(number_list):
+	for i in range(0, len(number_list)):
 		number_list[i] = adding_six(number_list[i])
 	print(number_list)
 			
@@ -230,11 +230,23 @@ main()\end{lstlisting}
 
 			\begin{verbatim}> [7, 8, 9, 10]\end{verbatim}
 			
-			We pass each value of \texttt{number\_list} into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into \texttt{number\_list}. Note the use of the \texttt{len} function inside the range function. \texttt{len} returns the number of elements in a list, in this case in combination with \texttt{range} it is an easy way to iterate through the whole list.
-				
-			\begin{task}Add subroutines to your code to split it up into sections.\end{task}
+			We pass each value of \texttt{number\_list} into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into \texttt{number\_list}, replacing the original value. 
 
-			With larger programs it can be convenient to split subroutines up into entirely different files. For example, if we have some simulation code to run a Monte Carlo simulation it would be sensible to split any analysis code off into a separate file. You will see this structure in the Monte Carlo code you will work with later. If we have a file called \textit{main.py} and another file called \textit{analysis.py} (in the same directory) containing the subroutine \textit{do\_analysis} then main.py might look like:
+Note the use of the \texttt{len} function inside the range function. \texttt{len} returns the number of elements in a list, in this case in combination with \texttt{range} it is an easy way to iterate through the whole list. There is an easier way though, Python treats lists as iterables, this means that a for loop can refer to them directly,
+
+			\begin{lstlisting}[language=Python]
+number_list = [1, 2, 3, 4]
+	
+for i in number_list:
+	number_list[i] = number_list[i] * 2
+print(numberlist)\end{lstlisting}				
+
+\begin{verbatim}> [2, 4, 6, 8]\end{verbatim}
+Previously the range command was generating a list which the for command iterated through. Here we cut out the middle man and iterate through \texttt{number\_list} list directly.
+
+\begin{task}Do the excercise in section \ref{LJ_excercise}.\end{task}
+
+			With larger programs it can be convenient to split subroutines up into entirely different files. For example, if we have some simulation code to run a Monte Carlo simulation it would be sensible to split any analysis code off into a separate file. If we have a file called \textit{main.py} and another file called \textit{analysis.py} (in the same directory) containing the subroutine \textit{do\_analysis} then main.py might look like:
 \begin{lstlisting}[language=Python]
 from analysis import do_analysis
 
@@ -250,14 +262,12 @@ def main()
 main()\end{lstlisting}
 By importing the file \textit{analysis} in the first line, we can call any functions it contains as if they were in the same file.
 
-While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Note the comment in one of the functions. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids in understanding the function of a particular piece of code. Commenting code is another important coding habit. 
+While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Note the comment in one of the functions. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids in understanding the function of a particular piece of code. Commenting code is another important coding habit.
 
 
 \section{NumPy}
-	\subsection{NumPy arrays}
-
-	\subsection{Vectorisation}
-	Computers are fast but not infinitely fast. This means that while trivial calculations can be done using any method, more complex calculations such as simulations of hundreds or thousands of particles often need more care. Python is beautiful and easy to use but it is not the fastest programming language. This means that to do things like Monte-Carlo simulations we must take some consideration of the efficiency of the programming constructs that we use.
+	\subsection{NumPy arrays and vectorisation}
+	Computers are fast but not infinitely fast. This means that while trivial calculations can be done using any method, more complex calculations such as simulations of hundreds or thousands of particles often need more care. Python is beautiful and easy to use but it is not the fastest programming language. This means that to do larger calculations we must take some consideration of the efficiency of the programming constructs that we use.
 
 	A very simple way to add 1 to each value in a list would be to step through the list and add 1 to each value.
 	\begin{lstlisting}[language=Python]
@@ -293,21 +303,24 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: can only concatenate list (not "int") to list\end{verbatim}
 
-	Basic Python doesn't understand vectorisation. Instead of adding one to each element in the list it is trying to add the number 1 onto the end of the list. This is where numpy (short for numerical Python) comes in. It is a library that adds data structures and functions suited to mathematical operations. A numpy array looks like a list but has some subtle differences.
+	Basic Python doesn't understand vectorisation. Instead of adding one to each element in the list it is trying to add the number 1 onto the end of the list. This is where NumPy (short for numerical Python) comes in. It is a library that adds data structures and functions suited to mathematical operations. A NumPy array looks like a list but has some subtle differences.
 
 	\begin{lstlisting}[language=Python]
 import numpy as np
-short_np_array = np.arange(0, 5)
+short_list = [0, 1, 2, 3, 4, 5]
+print(short_list)
+short_np_array = np.array(short_list)
 print(short_np_array)
 short_np_array = short_np_array + 1
 print(short_np_array)\end{lstlisting}
 
 	\begin{verbatim}
+> [0, 1, 2, 3, 4, 5]
 > [0 1 2 3 4]
 > [1 2 3 4 5]
 	\end{verbatim}
 
-	The numpy function \texttt{arange} generates a numpy array. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printied is that while Python lists have commas seperating the values, a numpy array doesn't. One of the big differences between lists and numpy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
+	The NumPy function \texttt{array} generates a NumPy array. It can take a few diffferent types of input but in this case we passed it a regular Python list. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printed is that while Python lists have commas seperating the values, a NumPy array doesn't. One of the big differences between lists and NumPy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
 
 	\begin{lstlisting}[language=Python]
 from time import time
@@ -323,20 +336,45 @@ print(end_time-start_time)\end{lstlisting}
 	\begin{verbatim}
 > 0.0694818496704 \end{verbatim}
 
-	Using numpy provides an impressive speedup of nearly 30 times for this simple operation. You will see use of the numpy library in the code you will use for the Monte Carlo simulations.
+	Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
 
-\section{Reading in data files}
-	\subsection{Numpy.loadtxt}
-		We don't want to have to type data into the python script every time we want to make a graph. Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. This can be easily read by Python.
+\section{Reading and writing text files}
+	\subsection{Reading from files}
+		The basic way to read in a text file is with the open function. This opens an interable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
+		\begin{lstlisting}[language=Python]
+input_file = open("example_data_file.txt", 'r')
+for line in input_file:
+	data_list = data_list.append(float(line))
+input_file.close()
+\end{lstlisting}	
+		There are a couple of interesting points here. Firstly, we open the file with the argument \texttt{`r'}. This means read mode, we can read data from the file but not write to it.
+Next, data is always read in as a string whether it is characters or digits. This means that to do mathematical operations on numerical data it must implicitly be converted to a float or int type. Be careful though, this is a forceful way of doing things and if the program tries to convert a string into an integer then it will crash. This means that this method is only suitable for input files that we are sure are solely numeric.
+		The next point is that we close the file object when we are finished reading from it. This is important as Python is connected to the file when the file object is open. If you don't disconnect then the file link may stay open in the background after Python finishes which may cause problems accessing the file later. Just like a fridge, you need to open the door before taking things in or out but must remember to close the door afterwards.
+
+	\subsection{Writing to files}
+		Writing to files is similar to reading from files but this time we have to open the file in write mode
+		\begin{lstlisting}[language=Python]
+my_calculated_data = [4, 5, 6, 7]
+output_file = open("example_data_file.txt", 'w')
+for number in my_calculated_data:
+	output_file.write(str(my_calculated_data[number]) + "\n")
+output_file.close()
+\end{lstlisting}	
+	Here the 'w' in the open file is opening \texttt{output\_file} in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
+Note again that file operations are done with strings so numbers have to be excplicitly converted before wiring to the file. But what is the \texttt{``\\n"} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
+
+Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy. 
+
+	\subsection{NumPy.loadtxt}
+		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{numpy.loadtxt} works well.
 		\begin{lstlisting}[language=Python]
 x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
 plt.plot(x_data, y_data)
 plt.show()\end{lstlisting}
 
-numpy.loadtxt is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
+\texttt{numpy.loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
 
-Since numpy.loadtxt reads the data into a numpy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then numpy.genfromtxt is a more complex but filexible file reading function.
-
+Since \texttt{loadtxt} reads the data into a NumPy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{numpy.genfromtxt} is a more complex but flexible file reading function.
 
 
 \section{Matplotlib}
@@ -359,8 +397,15 @@ plt.show()\end{lstlisting}
 
 
 \section{Exercises}
+	\subsection{Lennard-Jones potential}\label{LJ_excercise}
+		The Lennard-Jones potential is a model potential to describe the pair interaction between two atoms as a function of their separation,
+\begin{equation}u_{LJ}(r) = 4\epsilon \left [ \left (\frac{\sigma}{r} \right )^{12}- \left (\frac{\sigma}{r} \right )^{6} \right ]\end{equation}
+	where $r$ is the interparticle separation, $\epsilon$ is the well depth and $\sigma$ is the separation where the interaction strength zero. For atomic Argon, $\epsilon = 3.4*^{-10} \mathrm{m}$ and $\sigma= 1.65*10^{-21} \mathrm{J}$.
+	
+\textbf{Write a function which returns the interaction energy of two argon atoms as a function of their separation.}
+
 	\subsection{Calculation of pi}
-		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of area of an inscribed circle of a square to the area of the square as shown in Fig. \ref{fig:picircle}. 
+		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of the area of an inscribed circle of a square to the area of the square. This is illustrared in Fig. \ref{fig:picircle}. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.4]{images/pi}
