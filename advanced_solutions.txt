@@ -1,0 +1,50 @@
+##############
+Task 1:
+##############
+
+import numpy as np
+from math import ceil
+
+max_lim = 10000
+
+# Array represents numbers 1 to maxlim. 1 is prime zero is not. Add 1 so that indices match numbers.
+array = np.ones(max_lim + 1)
+
+# Zero and one are not prime
+array[0] = 0
+array[1] = 0
+
+for i in range(2, max_lim):
+    #if a number is marked as prime
+    if array[i] == 1:
+        #all of its multiples are not prime
+        j = 2
+        while i * j < max_lim+1:
+            array[j * i] = 0
+            j += 1
+
+print(np.sum(array))
+
+##############
+Task 2:
+##############
+import numpy as np
+
+inputfile = open("sample_data3.txt", 'r')
+
+names = []
+
+for line in inputfile:
+    names.append(line.strip())
+    
+names.sort()    
+
+total = 0
+for counter, name in enumerate(names):
+    sum  = 0
+    for letter in name:
+        sum += (ord(letter.lower())-96)
+    word_score = (counter+1) * sum
+    total += word_score
+    
+print(total)

@@ -16,8 +16,9 @@
 		i.	NumPy array slicing [list slicing]
 		b.	Vectorisation [math operations]
 4)	Reading in Data files
-	a.	Open file 
-	b.	Np.loadtxt [numpy arrays]
+	a.	Read file 
+    b.  Write file
+	c.	Np.loadtxt [numpy arrays]
 5)	Matplotlib
 	a.	Histograms
 	b.	Line Graphs [np.loadtxt]

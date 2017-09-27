@@ -142,7 +142,8 @@ print(list_of_numbers)\end{lstlisting}
 \begin{verbatim}> [3, 4, 5, 6]\end{verbatim}
 
 Note how the bounds of the range command work. As for list subscripting, the first value (3) is printed but not the last value (7).
-
+		\begin{task}Write a program that asks the user for a number n and prints the sum of the numbers 1 to n.\end{task}
+		\begin{task}Modify the previous program so it only sums odd numbers from 1 to n.\end{task}
 		\subsubsection{While loops}
 		Sometimes it is useful to have a conditional loop. A while loop, repeats a process untill a condition is met.
 \begin{lstlisting}[language=Python]
@@ -161,7 +162,7 @@ print("Yes, that's it.")\end{lstlisting}
 >> 4
 > Yes, that's it.\end{verbatim}
 		The comparison operator != checks whether something is not equal. While the two values are not equal the loop will repeat. As soon as they are equal, the loop will exit and the next command will be printed.
-
+\begin{advancedtask}How many integer prime numbers are there under 10,000? Hint: \url{https://en.wikipedia.org/wiki/Generating_primes}\end{advancedtask}
 
 	\subsection{Imports}
 		Sometimes we want functions from another package that are not included in the basic Python set of functions. We can import these packages. Here we import the function \texttt{random} from the package \texttt{random} and then use it.
@@ -264,6 +265,7 @@ By importing the file \textit{analysis} in the first line, we can call any funct
 
 While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Note the comment in one of the functions. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids in understanding the function of a particular piece of code. Commenting code is another important coding habit.
 
+\begin{advancedtask} Download a list of names from \url{https://angrypenguin.000webhostapp.com/sample_data3.txt}. Sort these names into alphabetical order. Give each name a score by summing the values of the letters where A = 1, B = 2... Z = 26. Multiply the score of the name by the position of the name in the list. What is the total sum of all of the name scores?\end{advancedtask}
 
 \section{NumPy}
 	\subsection{NumPy arrays and vectorisation}
@@ -338,9 +340,11 @@ print(end_time-start_time)\end{lstlisting}
 
 	Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
 
+\begin{task}Generate a large Python list of data and using a loop take the sqaure root of each element in the list. How does looping through a NumPy array compare speedwise? Finally use the np.sqrt function (Google for how to use it) to vectorise the operation. How much faster is this?\end{task} 
+
 \section{Reading and writing text files}
 	\subsection{Reading from files}
-		The basic way to read in a text file is with the open function. This opens an interable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
+		The basic way to read in a text file is with the open function. This opens an iterable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
 		\begin{lstlisting}[language=Python]
 input_file = open("example_data_file.txt", 'r')
 for line in input_file:
@@ -350,6 +354,7 @@ input_file.close()
 		There are a couple of interesting points here. Firstly, we open the file with the argument \texttt{`r'}. This means read mode, we can read data from the file but not write to it.
 Next, data is always read in as a string whether it is characters or digits. This means that to do mathematical operations on numerical data it must implicitly be converted to a float or int type. Be careful though, this is a forceful way of doing things and if the program tries to convert a string into an integer then it will crash. This means that this method is only suitable for input files that we are sure are solely numeric.
 		The next point is that we close the file object when we are finished reading from it. This is important as Python is connected to the file when the file object is open. If you don't disconnect then the file link may stay open in the background after Python finishes which may cause problems accessing the file later. Just like a fridge, you need to open the door before taking things in or out but must remember to close the door afterwards.
+\begin{task}Download a sample data file from: \url{https://angrypenguin.000webhostapp.com/sample_data1.txt}. Read the data in to Python and print the numbers to screen.\end{task}
 
 	\subsection{Writing to files}
 		Writing to files is similar to reading from files but this time we have to open the file in write mode
@@ -363,23 +368,37 @@ output_file.close()
 	Here the 'w' in the open file is opening \texttt{output\_file} in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
 Note again that file operations are done with strings so numbers have to be excplicitly converted before wiring to the file. But what is the \texttt{``\\n"} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
 
-Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy. 
+Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy.
+\begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
 
-	\subsection{NumPy.loadtxt}
+	\subsection{NumPy loadtxt}
 		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{numpy.loadtxt} works well.
 		\begin{lstlisting}[language=Python]
 x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
 plt.plot(x_data, y_data)
 plt.show()\end{lstlisting}
+\begin{task}Download a sample data file from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}. Read in this data using loadtxt and print it to the screen.\end{task}
 
 \texttt{numpy.loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
 
 Since \texttt{loadtxt} reads the data into a NumPy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{numpy.genfromtxt} is a more complex but flexible file reading function.
 
+	\subsection{NumPy savetxt}
+		In the same way as before, if you just havbe a simple numpy array of data, you can quickly save to a text file with NumPy savetxt,
+		\begin{lstlisting}[language=Python]
+my_clever_data = np.array([[2, 3], [4, 5], [6, 7]])
+
+np.savetxt("output.txt", my_clever_data)\end{lstlisting}
+
+\texttt{numpy.loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
+
+Since \texttt{loadtxt} reads the data into a NumPy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{numpy.genfromtxt} is a more complex but flexible file reading function.
+
+\begin{task}Using the input from the previous exercise, read in the data using loadtxt, multiply by 4 and print to a file using numysavetxt. Check the savetxt documentation for how to save a title line before the data.\end{task}
 
 \section{Matplotlib}
 	\subsection{Histograms}
-		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much mire customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
+		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
 		\begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -392,9 +411,27 @@ plt.show()\end{lstlisting}
 		First we import the matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
 		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
 		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
+		\begin{task}Complete excercsie \ref{pi_exercise}.\end{task}
+
+	\subsection{Line Plots}
+		Line plots are very similar to histograms,z
+		\begin{lstlisting}[language=Python]
+x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
+y_data=[58, 68, 65, 71, 78, 81, 78 ]
+plt.plot(x_data, y_data, linestyle = "-", marker = "x", markersize=10, linewidth=2)
+plt.title("Confuse-a-cat sucess rate")
+plt.xlabel("Year")
+plt.ylabel("Percentage of cats confused")
+plt.savefig("confuseacat.pdf")
+plt.show()\end{lstlisting}
+		\includegraphics[scale=0.8]{images/confuseacat}
+
+You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives detials about the marker and line types and other things linke how to change the line and marker colours.
+\begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
+Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.
 
 \section{Fitting Data}
-
+	Fitting data is easy in something like Origin but this is a poor approach if you have to fit 100 datasets.
 
 \section{Exercises}
 	\subsection{Lennard-Jones potential}\label{LJ_excercise}
@@ -404,7 +441,7 @@ plt.show()\end{lstlisting}
 	
 \textbf{Write a function which returns the interaction energy of two argon atoms as a function of their separation.}
 
-	\subsection{Calculation of pi}
+	\subsection{Calculation of pi}\label{pi_exercise}
 		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of the area of an inscribed circle of a square to the area of the square. This is illustrared in Fig. \ref{fig:picircle}. 
 	\begin{figure}[h]
 		\centering
@@ -430,22 +467,5 @@ plt.show()\end{lstlisting}
 		\label{fig:piarc}
 	\end{figure}
 
-	\begin{task}Using all of the above techniques, calculate pi using random numbers. Try using 100, 1000, 10,000 or more random samples, how does this affect the error? If you calculate pi 1000 times and plot a histogram of these values, what sort of distribution would you expect the values to follow and why? What is the nature of the relationship between number of samples and distribution width?\end{task}
+	\textbf{Using all of the above techniques, calculate pi using random numbers. Try using 100, 1000, 10,000 or more random samples, how does this affect the error? If you calculate pi 1000 times and plot a histogram of these values, what sort of distribution would you expect the values to follow and why? What is the nature of the relationship between number of samples and distribution width?}
 	If you find this task too hard, there are some hints in Appendix \ref{app:pi_hints}. Try not to look at them unless you are really stuck. Learning (of programming in particular) works much better if you got through the process of problem solving rather than just reading the answer. The hints in Appendix \ref{app:pi_hints} are graded in terms of difficulty. The first hint gives you a little help and the subsequent hints more help.
-
-	\subsection{Line Plots}
-		Line plots are very similar to histograms,z
-		\begin{lstlisting}[language=Python]
-x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
-y_data=[58, 68, 65, 71, 78, 81, 78 ]
-plt.plot(x_data, y_data, linestyle = "-", marker = "x", markersize=10, linewidth=2)
-plt.title("Confuse-a-cat sucess rate")
-plt.xlabel("Year")
-plt.ylabel("Percentage of cats confused")
-plt.savefig("confuseacat.pdf")
-plt.show()\end{lstlisting}
-		\includegraphics[scale=0.8]{images/confuseacat}
-
-You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives detials about the marker and line types and other things linke how to change the line and marker colours.
-\begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
-Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.

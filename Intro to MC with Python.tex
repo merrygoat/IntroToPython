@@ -40,6 +40,9 @@
 \newcounter{task}
 \newenvironment{task}[1][]{\refstepcounter{task}\par\bfseries{Task~\thetask. #1}}{\par}
 
+\newcounter{advancedtask}
+\newenvironment{advancedtask}[1][]{\refstepcounter{advancedtask}\par\bfseries{Advanced Task~\theadvancedtask. #1}}{\par}
+
 \begin{document}
 \maketitle
 
@@ -47,5 +50,7 @@
 
 \input{chapters/intro_to_python}
 
+\newpage
+\input{chapters/appendicies}
 
 \end{document}
