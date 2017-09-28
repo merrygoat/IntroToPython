@@ -157,7 +157,9 @@ for loop_number in [3, 4, 5, 6]:
 > 5
 > 6
 \end{verbatim}
-		Remember that the \texttt{range} function can be used to generate lists. This means that instead of 
+		This example shws that the number of iterations of the foor loop is controlled by the number of elements in the list and not what those elements are, this means you can loop over any arbitrary list, even a list of strings.
+
+Remember that the \texttt{range} function can be used to generate lists. This means that instead of 
 \begin{lstlisting}[language=Python]
 for loop_number in [3, 4, 5, 6]:
 \end{lstlisting}
@@ -198,7 +200,7 @@ print ("Your random number is: ", random())\end{lstlisting}
 		The random function prints a random decimal number between 0 and 1.
 		\begin{task}Write a for loop that will print out a random number between 0 and 5, 5 times.\end{task}
 		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}
-		\begin{task}Program a game of higher or lower. Generate a random integer between 1 and 100. Allow the user to inout a guess and tell them if the guess is too high or too low until they guess correctly.\end{task}		
+		\begin{task}Program a game of higher or lower. Generate a random integer between 1 and 100. Allow the user to input a guess and tell them if the guess is too high or too low until they guess correctly.\end{task}		
 
 	\subsection{Subroutines}
 			Python has many built in functions like \texttt{input}, and \texttt{random}. You can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split the program up into smaller subsections as this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
@@ -364,13 +366,13 @@ print(end_time-start_time)\end{lstlisting}
 	\begin{verbatim}
 > 0.0694818496704 \end{verbatim}
 
-	Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
+	The functon \texttt{arange} is a NumPy functon that is like \texttt{range} but generates a NumPy array instead of a Python list. Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
 
-\begin{task}Generate a large Python list of data and using a loop take the sqaure root of each element in the list. How does looping through a NumPy array compare speedwise? Finally use the np.sqrt function (Google for how to use it) to vectorise the operation. How much faster is this?\end{task} 
+\begin{task}Generate a large Python list of data and using a loop take the sqaure root of each element in the list. Now compare the speed when looping through a NumPy array. Finally use the np.sqrt function (Google for how to use it) to vectorise the operation. How much faster is this?\end{task} 
 
 \section{Reading and writing text files}
 	\subsection{Reading from files}
-		The basic way to read in a text file is with the open function. This opens an iterable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
+		The basic way to read in a text file is with the \texttt{open} function. This opens an iterable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
 		\begin{lstlisting}[language=Python]
 input_file = open("example_data_file.txt", 'r')
 for line in input_file:
@@ -378,24 +380,35 @@ for line in input_file:
 input_file.close()
 \end{lstlisting}	
 		There are a couple of interesting points here. Firstly, we open the file with the argument \texttt{`r'}. This means read mode, we can read data from the file but not write to it.
-Next, data is always read in as a string whether it is characters or digits. This means that to do mathematical operations on numerical data it must implicitly be converted to a float or int type. Be careful though, this is a forceful way of doing things and if the program tries to convert a string into an integer then it will crash. This means that this method is only suitable for input files that we are sure are solely numeric.
-		The next point is that we close the file object when we are finished reading from it. This is important as Python is connected to the file when the file object is open. If you don't disconnect then the file link may stay open in the background after Python finishes which may cause problems accessing the file later. Just like a fridge, you need to open the door before taking things in or out but must remember to close the door afterwards.
+Next, data is always read in as a string whether it is characters or digits. This means that to do mathematical operations on numerical data it must implicitly be converted to a float or int type. Be careful though, this is a forceful way of doing things and if the program tries to convert a string into an integer then it will crash. This means that this method is only suitable for input files that we are sure are solely numeric unless some extra cheacks are added.
+		The next point is that we close the file object when we are finished reading from it. This is important as Python is connected to the file when the file object is open. If you don't disconnect, then the file link may stay open in the background after Python finishes which may cause problems accessing the file later. Just like a fridge, you need to open the door before taking things in or out but must remember to close the door afterwards.
+
+Python has a particular style which is not particularly important for these workshops but is worth discussion in case you want to study the language further. The standard coding style is set out in a series of documents called the Python Enhancement Proposals. Some of these documents are very serious and boring proposals while others are reccomendations in the form of poems. In summary, the principle of good Python is readability. The code that you write should be as understandable as possible. Code that follows this principle is called ``Pythonic''. There are certain common Pythonic ideoms one of which is seen when handling files. Instead of explicitly opening and closing a file we can use a while loop to do it implicitly
+		\begin{lstlisting}[language=Python]
+with open("example_data_file.txt", 'r') as input_file:
+	for line in input_file:
+		data_list = data_list.append(float(line))
+\end{lstlisting}	
+This way the file is opened at the \texttt{with} statement and kept open for all of the indented statements. It doesnt have to be explicitly closed as it is done automatically when the \texttt{with} statement is left.
+
+At the end of the day it is up to you. While there are some commonly adopted standards, you can do whatever you think makes your code the most readable.
+
 \begin{task}Download a sample data file from: \url{https://angrypenguin.000webhostapp.com/sample_data1.txt}. Read the data in to Python and print the numbers to screen.\end{task}
 
 	\subsection{Writing to files}
 		Writing to files is similar to reading from files but this time we have to open the file in write mode
 		\begin{lstlisting}[language=Python]
 my_calculated_data = [4, 5, 6, 7]
-output_file = open("example_data_file.txt", 'w')
-for number in my_calculated_data:
-	output_file.write(str(my_calculated_data[number]) + "\n")
-output_file.close()
+with open("example_data_file.txt", 'w') as output_file:
+	for number in my_calculated_data:
+		output_file.write(str(my_calculated_data[number]) + "\n")
 \end{lstlisting}	
-	Here the 'w' in the open file is opening \texttt{output\_file} in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
-Note again that file operations are done with strings so numbers have to be excplicitly converted before wiring to the file. But what is the \texttt{``\\n"} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
+	Here the 'w' in the \texttt{open} function is opening ``output\_file'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
+Note again that file operations are done with strings so numbers have to be excplicitly converted before writing to the file. But what is the \texttt{``\\n"} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
+
+\begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
 
 Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy.
-\begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
 
 	\subsection{NumPy loadtxt}
 		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{numpy.loadtxt} works well.
