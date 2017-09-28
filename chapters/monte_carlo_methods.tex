@@ -1,8 +1,8 @@
 \section{Monte Carlo Methods}
 	\subsection{Introduction}
-		Monte Carlo methods are stochastic simulation methods. The method itself is very general and can be applied to many problems in science. Here we study in more detail the method as applied to evaluating time integrals for a many particle system. To simulate the time evolution of a system, particles are random displaced, guided by the changing energy of the system as the particles move.
+		Monte Carlo methods are stochastic simulation methods. The method itself is very general and can be applied to many problems in science. Here we study in more detail the method as applied to evaluating time integrals for a many particle system. To simulate the time evolution of a system, particles are randomly displaced, guided by the changing energy of the system as the particles move. This is the point where the tutorial becomes applied. An interesting system that has been studied here in Bristol in the Nanophysics group is hard sphere particles encapsulated in liquid drops. When the spheres are densely packed in droplets of < 10 times the particle diameter the confinement results in formation of particle configurations different from those adopted in an unconfined bulk system. We can design a basic simulation to model this system.
 
-		The outline of a Monte Carlo simulation is quite simple. As we will see however, how we implement each section depends on our system and is not trivial. First, consider the outline of the algorithm. For this outline and when describing general concepts throughout this document, I use psedodcode with a Pythonic syntax. Names with brackets after them indicate functions which we will explore in more detail later.
+		The outline of a Monte Carlo simulation is not too complex. As we will see however, how we implement each section depends on our system and is not trivial. First, consider the outline of the algorithm. For this outline and when describing general concepts throughout this document, I use psedodcode with a Pythonic syntax. Names with brackets after them indicate functions which we will explore in more detail later.
 	\begin{lstlisting}
 initialise_system()
 

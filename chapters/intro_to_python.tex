@@ -411,33 +411,29 @@ Note again that file operations are done with strings so numbers have to be excp
 Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy.
 
 	\subsection{NumPy loadtxt}
-		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{numpy.loadtxt} works well.
+		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{loadtxt} works well.
 		\begin{lstlisting}[language=Python]
 x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
 plt.plot(x_data, y_data)
 plt.show()\end{lstlisting}
 \begin{task}Download a sample data file from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}. Read in this data using loadtxt and print it to the screen.\end{task}
 
-\texttt{numpy.loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
+\texttt{loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the title line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first variable in as 2 column array. Again, try the code without the unpack parameter and see what happens.
 
-Since \texttt{loadtxt} reads the data into a NumPy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{numpy.genfromtxt} is a more complex but flexible file reading function.
+Since \texttt{loadtxt} reads the data into a NumPy array it accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{genfromtxt} is a more complex but flexible file reading function.
 
 	\subsection{NumPy savetxt}
-		In the same way as before, if you just havbe a simple numpy array of data, you can quickly save to a text file with NumPy savetxt,
+		In the same way as before, if you just have a simple NumPy array of data, you can quickly save to a text file with NumPy \texttt{savetxt},
 		\begin{lstlisting}[language=Python]
 my_clever_data = np.array([[2, 3], [4, 5], [6, 7]])
 
 np.savetxt("output.txt", my_clever_data)\end{lstlisting}
 
-\texttt{numpy.loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the tiltle line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first vairbale in as 2 column array.
-
-Since \texttt{loadtxt} reads the data into a NumPy array it also accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{numpy.genfromtxt} is a more complex but flexible file reading function.
-
-\begin{task}Using the input from the previous exercise, read in the data using loadtxt, multiply by 4 and print to a file using numysavetxt. Check the savetxt documentation for how to save a title line before the data.\end{task}
+\begin{task}Using the input from the previous exercise, read in the data using \texttt{loadtxt}, multiply the values in the second column by 4 and print to a file using \texttt{savetxt}. Check the \texttt{savetxt} documentation for how to save a title line before the data.\end{task}
 
 \section{Matplotlib}
 	\subsection{Histograms}
-		There is a very powerful package called matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. In addition, once you have a nice set of temlates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
+		There is a very powerful package called Matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. In addition, once you have a nice set of templates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
 		\begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -447,13 +443,13 @@ plt.hist(listofnumbers, bins=[0, 1, 2, 3, 4, 5, 6, 7])
 plt.show()\end{lstlisting}
 		\includegraphics[scale=0.8]{images/histogram}
 
-		First we import the matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the import commands. Then we generate a list of numbers and plot them as a histogram.
+		First we import the Matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the \texttt{import} commands. Then we generate a list of numbers and plot them as a histogram.
 		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
 		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
 		\begin{task}Complete excercsie \ref{pi_exercise}.\end{task}
 
 	\subsection{Line Plots}
-		Line plots are very similar to histograms,z
+		Line plots are very similar to histograms,
 		\begin{lstlisting}[language=Python]
 x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
 y_data=[58, 68, 65, 71, 78, 81, 78 ]
@@ -468,20 +464,67 @@ plt.show()\end{lstlisting}
 You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives detials about the marker and line types and other things linke how to change the line and marker colours.
 \begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
 Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.
+\begin{task}Using sample\_data2 from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}, read in this data and plot as a scatter plot.\end{task}
 
 \section{Fitting Data}
-	Fitting data is easy in something like Origin but this is a poor approach if you have to fit 100 datasets.
+	Fitting data is easy in something like Origin but this is a poor approach if you have to fit 100 datasets. As with everything in programming, it takes a little time to set up a script but if you have to run it 100 times then you can save a lot of time.
+
+The first part is to define a function that describes your fit. It should have the independent variable as the first argument and the adjustable variables afterwards,
+\begin{lstlisting}[language=Python]
+def linear_function(x, m, c):
+	return m * x + c
+\end{lstlisting}
+
+Then once you have some data you can use the \texttt{curve\_fit} function from scipy.optimize to find the optimal fitting paramters.
+\begin{lstlisting}[language=Python]
+x_data = [1, 2, 3, 4, 5, 6]
+y_data = [3.2, 4.9, 7.1, 8.7, 10.9, 13.2]
+
+popt, pcov = curve_fit(linear_function, x_data, y_data)
+\end{lstlisting}
+``popt'' stores the optimal fitting paramters while ``pconv'' stores the covariance of the fit.
+Now to plot this fit we have to generate some x-values and determine the corresponding y-values using the parameters we have determined.
+\begin{lstlisting}[language=Python]
+x_fit = np.arange(1, 6, 0.01)
+y_fit = linear_function(x_fit, popt[0], popt[1])
+\end{lstlisting}
+After this we can plot the original data as points and the fit as a line. Putting all of this together gives us
+
+\begin{lstlisting}[language=Python]
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.optimize import curve_fit
+%matplotlib inline
+
+def linear_function(x, m, c):
+    return m * x + c
+
+x_data = [1, 2, 3, 4, 5, 6]
+y_data = [3.2, 4.9, 7.1, 8.7, 10.9, 13.2]
+
+popt, pcov = curve_fit(linear_function, x_data, y_data)
+
+x_fit = np.arange(1, 6, 0.01)
+y_fit = linear_function(x_fit, popt[0], popt[1])
+
+plt.plot(x_data, y_data, marker="x", markersize=10, linewidth=0)
+plt.plot(x_fit, y_fit, linewidth=2)
+plt.xlabel("Time spent learning Python (hours)", fontsize=12)
+plt.ylabel("Love of Python (arbitrary units)", fontsize=12)
+plt.show()
+\end{lstlisting}
+\begin{task}Using the data from sample\_data2 (\url{https://angrypenguin.000webhostapp.com/sample_data2.txt}) fit and plot a log curve to the data. What are the coefficients?\end{task}
 
 \section{Exercises}
 	\subsection{Lennard-Jones potential}\label{LJ_excercise}
 		The Lennard-Jones potential is a model potential to describe the pair interaction between two atoms as a function of their separation,
 \begin{equation}u_{LJ}(r) = 4\epsilon \left [ \left (\frac{\sigma}{r} \right )^{12}- \left (\frac{\sigma}{r} \right )^{6} \right ]\end{equation}
-	where $r$ is the interparticle separation, $\epsilon$ is the well depth and $\sigma$ is the separation where the interaction strength zero. For atomic Argon, $\epsilon = 3.4*^{-10} \mathrm{m}$ and $\sigma= 1.65*10^{-21} \mathrm{J}$.
+	where $r$ is the interparticle separation, $\epsilon$ is the well depth and $\sigma$ is the separation where the interaction strength zero. For atomic argon, $\epsilon = 3.4*^{-10} \mathrm{m}$ and $\sigma= 1.65*10^{-21} \mathrm{J}$.
 	
 \textbf{Write a function which returns the interaction energy of two argon atoms as a function of their separation.}
 
 	\subsection{Calculation of pi}\label{pi_exercise}
-		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that Pi is the ratio of the area of an inscribed circle of a square to the area of the square. This is illustrared in Fig. \ref{fig:picircle}. 
+		Some processes can be modelled using random numbers. One of the simplest examples of this is finding the value of pi. Pi is the ratio of a circle's radius to its circumference. Equivalently we can say that pi is the ratio of the area of an inscribed circle of a square to the area of the square. This is illustrared in Fig. \ref{fig:picircle}. 
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=0.4]{images/pi}

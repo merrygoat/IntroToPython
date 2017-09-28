@@ -1,4 +1,29 @@
 ##############
+Curve fit
+##############
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.optimize import curve_fit
+%matplotlib inline
+
+def log_function(x, a, b):
+    return a * np.log(x) + b
+
+x_data, y_data = np.loadtxt("C:\\Users\\Peter\\Desktop\\sample_data2.txt", skiprows=1, unpack=True)
+popt, pcov = curve_fit(log_function, x_data, y_data)
+print(popt)
+
+x_fit = np.arange(1, 10, 0.01)
+y_fit = log_function(x_fit, popt[0], popt[1])
+
+plt.plot(x_data, y_data, marker="x", markersize=10, linewidth=0)
+plt.plot(x_fit, y_fit, linewidth=2)
+plt.xlabel("Weight of African Swallow (oz)", fontsize=12)
+plt.ylabel("Carrying Capacity (lb)", fontsize=12)
+plt.show()
+
+
+##############
 Task 1:
 ##############
 
