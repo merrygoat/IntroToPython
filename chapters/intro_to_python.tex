@@ -18,7 +18,8 @@ Division in Python 3 gives a decimal answer as you would expect.
 		\begin{verbatim}> 8\end{verbatim}
 
 	\subsection{Variables}\label{types}
-		We can store values in variables. You can think of these as ``buckets'' which hold values. You can call variables anything you like as long as it doesn't start with a number. In addition it is a bad idea to use variable names that are reserved keywords elsewhere in Python such as \texttt{print}, \texttt{sum} or \texttt{list}. 
+		We can store values in variables. You can think of these as ``buckets'' which hold values. You can call variables anything you like as long as it starts with a letter and uses only alphanumeric characters or underscore. In addition it is a very bad idea to use variable names that are reserved keywords elsewhere in Python such as \texttt{print}, \texttt{sum} or \texttt{list}.
+The \texttt{print} function prints things to the screen.
 		\begin{lstlisting}[language=Python]
 a = 6 + 3
 print(a)
@@ -27,7 +28,7 @@ print(dead_parrot)\end{lstlisting}
 		\begin{verbatim}> 9
 			> This parrot is no more! He has ceased to be!
 		\end{verbatim}
-		Variables have types. The main types you need to worry about are integers, floats and strings. Integers are whole numbers, floats are decimals and strings are text. Operations between floats and integers are permitted and the answer will be expressed as a float.
+		Variables have types. The main types you need to worry about are integers, floats (short for floating point numbers) and strings. Integers are whole numbers, floats are decimals and strings are text. Operations between floats and integers are permitted and the answer will be expressed as a float.
 		\begin{lstlisting}[language=Python]
 spam = 7
 eggs = 0.5
@@ -50,17 +51,17 @@ line_one = "I'm a lumberjack and I'm OK, "
 line_two = "I work all night and I work all day"
 song = line_one + line_two
 print(song)\end{lstlisting}
-		\begin{verbatim}> 9
+		\begin{verbatim}
 			> "I'm a lumberjack and I'm OK, I work all night and I work all day"
 		\end{verbatim}
 
 	\subsection{Lists}
-	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. Lists are just another type of variable, so as before you can name them anything you like as long as it doesn't start with a number or is a reserved command (like print).
+	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. Lists are just another type of variable, so as before you can name them anything you like as long as you follow the above variable naming rules.
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 5]
 print(numberlist)\end{lstlisting}
 		\begin{verbatim}> [1, 2, 5]\end{verbatim}
-		You can fetch a single value from a list by subscripting the list. You can fetch multiple values by asking for a range.
+		You can fetch a single value from a list by subscripting the list with square brackets. You can fetch multiple values by asking for a range.
 		
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 3, 4, 5, 6, 7]
@@ -73,39 +74,48 @@ print(numberlist[0:3])\end{lstlisting}
 		The second command returns only three values. This is because the lower bound is inclusive but the upper bound is exclusive (for mostly the same reasons that things start counting at zero not one). 
 		The append command will add things onto the end of a list.
 		\begin{lstlisting}[language=Python]
+numberlist = [1, 2, 5]
 numberlist.append(8)
 print(numberlist)	\end{lstlisting}
 		\begin{verbatim}> [1, 2, 5, 8]\end{verbatim}
+		The \texttt{range} function generates lists that are integer sequences between two specified numbers.
+\begin{lstlisting}[language=Python]
+my_list = range(3, 6)
+print(my_list)	\end{lstlisting}
+		\begin{verbatim}> [3, 4, 5]\end{verbatim}
+		Note how the bounds of the \texttt{range} function work. As for list subscripting, the first value (3) is printed but not the last value (7).
 	\subsection{User input}
 		Somtimes it is useful to accept some user input while the program is running and operate on this input. This can be achieved with the input command.
 		\begin{lstlisting}[language=Python]
 person_name = input("What is your name?")
 print("Hello " + person_name)\end{lstlisting}
 		\begin{verbatim}> Hello Arthur Pewty\end{verbatim}
-		Note that the input function always interprets the user's input as text. This means that if the input needs to be interpreted as a number then it should be converted explicitly to an integer or float using int() or float()
+		Note that the input function always interprets the user's input as text. This means that if the input needs to be interpreted as a number then it should be converted explicitly to an integer or float using \texttt{int} or \texttt{float}
 		\begin{lstlisting}[language=Python]
 user_input_number = float(input("Enter a number of years: "))
 print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
-		\begin{verbatim}> Two more than your number is: 42\end{verbatim}
+		\begin{verbatim}> Two more than your number is: 42.0\end{verbatim}
 
 	\subsection{Flow control}
 		\subsubsection{If statements}
 		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values then this can make them much more powerful. The \texttt{if}' statement is the most simple of these flow control tools.
 		
 		\begin{lstlisting}[language=Python]
-a = 4
+penguins = 4
 
-if a < 10:
-	print(a, " is less than 10.")
+if penguins < 10:
+	print(penguins, " is less than 10.")
 else:
-	print(a, " is not less than 10.")
-print("This is printed regardless of the value of a")\end{lstlisting}
-		\begin{verbatim}> 4 is less than 10.\end{verbatim}	
-		Note how the program flow is controlled by the indentation. Only the indented if statement that is true is printed.The last sentence is always printed, since it is outside of the if statement.
+	print(penguins, " is not less than 10.")
+print("This is printed regardless of the value of penguins.")\end{lstlisting}
+		\begin{verbatim}
+> 4 is less than 10.
+> This is printed regardless of the value of penguins.\end{verbatim}	
+		Note how the program flow is controlled by the indentation. The \texttt{if} statement  is evaluated and if True then the indented code is run and the else section is skipped. If the \texttt{if} statement  is evaluated and is False, the indented code is skipped and the code beneath the else statement is run. After the \texttt{if}  statement is fully evaluated the program flow returns to the next unindented statement. In this case the last sentence is always printed since it is outside of the \texttt{if} statement. Also the if statement is finished by a colon. This indicates where the question finishes.
 		
 		If you recall the discussion of types in section \ref{types}, you will notice that that the \texttt{print} function seems happy to combine a numeric and string type. This is because \texttt{print} is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
 		
-		More complex questions can be asked by asking multiple times using the elif statement. The elif statement only executes if the previous statements have been false
+		More complex questions can be asked by asking multiple times using the \texttt{elif} statement. The \texttt{elif} statement only executes if the previous statements have been False
 		\begin{lstlisting}[language=Python]
 num_penguins = 17
 
@@ -118,36 +128,48 @@ elif num_penguins == 10:
 else:
 	print("This statement should never be printed")\end{lstlisting}
 		\begin{verbatim}> That is quite a lot of penguins\end{verbatim}
-		It is important to understand the distinction between comparions and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
+As with the \texttt{if} statement, syntactically the \texttt{elif} and \texttt{elise} statements are finished with a colon (as are all flow control statments).	
+
+It is important to understand the distinction between comparions and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
 		\begin{task}What happens if you change num\_penguins?\end{task}
 		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relvent message depending on whether or not they are equal.\end{task}
+		\begin{task} Write a program that asks for the users name, compliments them if it begins with the letter ``P'', insults them if the name is ``Peter'' and otherwise repeats the name back again.\end{task}
+		\begin{advancedtask}Think about sanitising the user input so that no possible user input can cause an error. Think about users inputting non-alphabetic characters and the case of the characters (PETER should be accepted).\end{advancedtask}
 
 
 		\subsubsection{For loops}
-		For loops are a flow control tool that can be used to repeat a command multiple times.
+		For loops are a flow control tool that can be used to repeat a command multiple times by iterating over the members of a sequence.
 		\begin{lstlisting}[language=Python]
 list_of_numbers = []
-for loop_number in range(0, 5):
+for loop_number in [0, 1, 2, 3, 4]:
 	list_of_numbers.append(7)
 print(list_of_numbers)\end{lstlisting}
 		\begin{verbatim}> [7, 7, 7, 7, 7]\end{verbatim}
 
-		\begin{task}What would happen if the print line was indented also?\end{task}
-		We can use the value stored in loop\_pointer to count as well:
+		\begin{task}What would happen if the \texttt{print} line was also indented?\end{task}
+		Each time the for loop is evaluated the next value in the sequence is stored in the ``loop\_number'' variable. This allows you to count
 		\begin{lstlisting}[language=Python]
-list_of_numbers = []
+for loop_number in [3, 4, 5, 6]:
+	print(loop_number)\end{lstlisting}
+\begin{verbatim}
+> 3
+> 4
+> 5
+> 6
+\end{verbatim}
+		Remember that the \texttt{range} function can be used to generate lists. This means that instead of 
+\begin{lstlisting}[language=Python]
+for loop_number in [3, 4, 5, 6]:
+\end{lstlisting}
+		it is easier to use,
+\begin{lstlisting}[language=Python]
 for loop_number in range(3, 7):
-	list_of_numbers.append(loop_number)
-print(list_of_numbers)\end{lstlisting}
-\begin{verbatim}> [3, 4, 5, 6]\end{verbatim}
-
-Note how the bounds of the range command work. As for list subscripting, the first value (3) is printed but not the last value (7).
+\end{lstlisting}
 		\begin{task}Write a program that asks the user for a number n and prints the sum of the numbers 1 to n.\end{task}
 		\begin{task}Modify the previous program so it only sums odd numbers from 1 to n.\end{task}
 		\subsubsection{While loops}
 		Sometimes it is useful to have a conditional loop. A while loop, repeats a process untill a condition is met.
 \begin{lstlisting}[language=Python]
-
 secret_number = 4
 user_number = 0
 
@@ -175,10 +197,11 @@ print ("Your random number is: ", random())\end{lstlisting}
 		
 		The random function prints a random decimal number between 0 and 1.
 		\begin{task}Write a for loop that will print out a random number between 0 and 5, 5 times.\end{task}
-		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}		
+		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10).\end{task}
+		\begin{task}Program a game of higher or lower. Generate a random integer between 1 and 100. Allow the user to inout a guess and tell them if the guess is too high or too low until they guess correctly.\end{task}		
 
 	\subsection{Subroutines}
-			Python has many built in functions like \texttt{input}, and \texttt{random}. You can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split the program up into smaller subsections, this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
+			Python has many built in functions like \texttt{input}, and \texttt{random}. You can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split the program up into smaller subsections as this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
 			\begin{lstlisting}[language=Python]
 def hungarian_phrasebook():
 	print("My hovercraft is full of eels.")
@@ -189,7 +212,9 @@ for i in range(0, 2):
 			> My hovercraft is full of eels
 			\end{verbatim}
 
-While this does break up the code somewhat, the function is not very useful since it does exactly the same thing each time. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the function called an argument.
+In this example lines 1 and 2 define the function. The code in the function does not run until it is called in line 4. When the program runs it first saves the function \texttt{hungarian\_phrasebook} to memory and then begins executing the rest of the code on line 3. 
+
+While this does break up the code somewhat, the function is not very useful since it does exactly the same thing each time it is called. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the function called an argument.
 
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -200,7 +225,9 @@ adding_six(14)\end{lstlisting}
 			\begin{verbatim}> 9
 				> 20\end{verbatim}
 
-				Here on line 1 we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines. Note that you must remember to call main as seen in line 8. If you dont call main then Python will add all of the subroutines to its memory and then not run them and exit!
+				Here on line 1 we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. 
+
+It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines. Note that you must remember to call main as seen in line 8. If you dont call main then Python will add all of the subroutines to its memory and then not run them and exit!
 				
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -214,7 +241,9 @@ main()\end{lstlisting}
 			\begin{verbatim}> 6
 				> 7\end{verbatim}
 				
-				Subroutines don't just have to print values. They can do some processing and then return the value to the main loop using the \texttt{return} command.
+				You can stack as many subroutines as you like, subroutines can call other subroutines and so on. Be careful about how readable your code is though, if you have layers upon layers of subroutines it can be very complex to understand the program flow and there is probably a better way to structure the code. 
+
+				Subroutines don't just have to print values. They can do some processing and then return the value to the main loop using the \texttt{return} function.
 
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -231,9 +260,9 @@ main()\end{lstlisting}
 
 			\begin{verbatim}> [7, 8, 9, 10]\end{verbatim}
 			
-			We pass each value of \texttt{number\_list} into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into \texttt{number\_list}, replacing the original value. 
+			We pass each value of ``number\_list'' into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into ``number\_list'', replacing the original value. 
 
-Note the use of the \texttt{len} function inside the range function. \texttt{len} returns the number of elements in a list, in this case in combination with \texttt{range} it is an easy way to iterate through the whole list. There is an easier way though, Python treats lists as iterables, this means that a for loop can refer to them directly,
+Note the use of the \texttt{len} function inside \texttt{range}. \texttt{len} returns the number of elements in a list, in this case in combination with \texttt{range} it is an easy way to iterate through the whole list. There is an easier way though, as we saw earlier, Python treats lists as iterables which means that a for loop can refer to them directly,
 
 			\begin{lstlisting}[language=Python]
 number_list = [1, 2, 3, 4]
@@ -243,11 +272,8 @@ for i in number_list:
 print(numberlist)\end{lstlisting}				
 
 \begin{verbatim}> [2, 4, 6, 8]\end{verbatim}
-Previously the range command was generating a list which the for command iterated through. Here we cut out the middle man and iterate through \texttt{number\_list} list directly.
 
-\begin{task}Do the excercise in section \ref{LJ_excercise}.\end{task}
-
-			With larger programs it can be convenient to split subroutines up into entirely different files. For example, if we have some simulation code to run a Monte Carlo simulation it would be sensible to split any analysis code off into a separate file. If we have a file called \textit{main.py} and another file called \textit{analysis.py} (in the same directory) containing the subroutine \textit{do\_analysis} then main.py might look like:
+			With larger programs it can be convenient to split subroutines up into entirely different files. For example, if we have some simulation code to run a numerical simulation it would be sensible to split any analysis code off into a separate file. If we have a file called \textit{main.py} and another file called \textit{analysis.py} (in the same directory) containing the subroutine \texttt{do\_analysis} then main.py might look like:
 \begin{lstlisting}[language=Python]
 from analysis import do_analysis
 
@@ -264,8 +290,8 @@ main()\end{lstlisting}
 By importing the file \textit{analysis} in the first line, we can call any functions it contains as if they were in the same file.
 
 While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Note the comment in one of the functions. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids in understanding the function of a particular piece of code. Commenting code is another important coding habit.
-
-\begin{advancedtask} Download a list of names from \url{https://angrypenguin.000webhostapp.com/sample_data3.txt}. Sort these names into alphabetical order. Give each name a score by summing the values of the letters where A = 1, B = 2... Z = 26. Multiply the score of the name by the position of the name in the list. What is the total sum of all of the name scores?\end{advancedtask}
+\begin{task}Do the excercise in section \ref{LJ_excercise}.\end{task}
+\begin{advancedtask} Download a list of names from \url{https://angrypenguin.000webhostapp.com/sample_data3.txt}. Sort these names into alphabetical order. Give each name a value by summing the letter values in the name where A = 1, B = 2... Z = 26. Multiply the name value by the position of the name in the list to get a score for each name. What is the total sum of all of the name scores?\end{advancedtask}
 
 \section{NumPy}
 	\subsection{NumPy arrays and vectorisation}
