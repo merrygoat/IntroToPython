@@ -419,24 +419,25 @@ with open("example_data_file.txt", 'w') as output_file:
 	for number in my_calculated_data:
 		output_file.write(str(my_calculated_data[number]) + "\n")
 \end{lstlisting}	
-	Here the 'w' in the \texttt{open} function is opening ``output\_file'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
+	Here the \texttt{`w'} in the \texttt{open} function is opening ``example\_data\_file.txt'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
 Note again that file operations are done with strings so numbers have to be excplicitly converted before writing to the file. But what is the \texttt{``\textbackslash{}n''} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
 
 \begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
 
-Reading and writing to files directly like this is good if the file you want to read or write has a very specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way in NumPy.
+Reading and writing to files directly like this is good if the file you want to read or write requires a specific or complex format. These methods can also write combinations of numbers and strings which can be useful. However, most of the time our data analysis will just be done on grids of numbers. For this there is an easier way with NumPy.
 
 	\subsection{NumPy loadtxt}
-		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{loadtxt} works well.
+		Most likely whatever experiment or simulation we have done will have already written data to a file that can be read. Most simulations and some experimental equipment will allow you to output your data as a plain text file. There are many functions from different libraries that allow file reading but for simple text files of numbers \texttt{loadtxt} is easy to use.
 		\begin{lstlisting}[language=Python]
 x_data, y_data = np.loadtxt("example_input_data.txt", skiprows=1, unpack=True)
 plt.plot(x_data, y_data)
 plt.show()\end{lstlisting}
-\begin{task}Download a sample data file from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}. Read in this data using loadtxt and print it to the screen.\end{task}
 
-\texttt{loadtxt} is a fairly basic way of reading in data files. It will only read in square grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the title line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first variable in as 2 column array. Again, try the code without the unpack parameter and see what happens.
+\texttt{loadtxt} is a fairly basic way of reading in data files. It will only read in grids of data and will struggle if there are data points missing. Notice how we use the skipline command to skip the title line in the file. Try without the skipline parameter and see what happens. The unpack parameter is also important, this reads the first column into the first variable and the second column into the second variable we specified. Without the unpack parameter the data would be read into the first variable in as 2 column array. Again, try the code without the unpack parameter and see what happens.
 
 Since \texttt{loadtxt} reads the data into a NumPy array it accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{genfromtxt} is a more complex but flexible file reading function.
+
+\begin{task}Download a sample data file from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}. Read in this data using \texttt{loadtxt} and print it to the screen.\end{task}
 
 	\subsection{NumPy savetxt}
 		In the same way as before, if you just have a simple NumPy array of data, you can quickly save to a text file with NumPy \texttt{savetxt},
@@ -449,7 +450,7 @@ np.savetxt("output.txt", my_clever_data)\end{lstlisting}
 
 \section{Matplotlib}
 	\subsection{Histograms}
-		There is a very powerful package called Matplotlib that provides functions for plotting graphs. Matplotlib is used across academia for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. In addition, once you have a nice set of templates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
+		There is a very powerful package called Matplotlib that provides functions for plotting graphs. Matplotlib is used across academia as well as elsewhere for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. You can also output files in vector format which is required for submission to most journals. In addition, once you have a nice set of templates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
 		\begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -459,13 +460,13 @@ plt.hist(listofnumbers, bins=[0, 1, 2, 3, 4, 5, 6, 7])
 plt.show()\end{lstlisting}
 		\includegraphics[scale=0.8]{images/histogram}
 
-		First we import the Matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. Again you only need this command once per session so it is common to put it at the top with the \texttt{import} commands. Then we generate a list of numbers and plot them as a histogram.
+		First we import the Matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. You only need this command once per session so it is common to put it at the top with the \texttt{import} commands. Then we generate a list of numbers and plot them as a histogram.
 		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
 		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
-		\begin{task}Complete excercsie \ref{pi_exercise}.\end{task}
+		\begin{task}Complete the excercsie in section \ref{pi_exercise}.\end{task}
 
 	\subsection{Line Plots}
-		Line plots are very similar to histograms,
+		Line plots are made in a similar way to histograms,
 		\begin{lstlisting}[language=Python]
 x_data=[2011, 2012, 2013, 2014, 2015, 2016, 2017]
 y_data=[58, 68, 65, 71, 78, 81, 78 ]
@@ -504,7 +505,7 @@ Now to plot this fit we have to generate some x-values and determine the corresp
 x_fit = np.arange(1, 6, 0.01)
 y_fit = linear_function(x_fit, popt[0], popt[1])
 \end{lstlisting}
-After this we can plot the original data as points and the fit as a line. Putting all of this together gives us
+\texttt{arange} is generating an array of x-values from 1 to 6 at 0.01 intervals. The y-values are then found by putting the x-values and optimised fitting parameters into the fitting function. After this we can plot the original data as points and the fit as a line. Putting all of this together gives us
 
 \begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
@@ -515,14 +516,18 @@ from scipy.optimize import curve_fit
 def linear_function(x, m, c):
     return m * x + c
 
+# Generate the data
 x_data = [1, 2, 3, 4, 5, 6]
 y_data = [3.2, 4.9, 7.1, 8.7, 10.9, 13.2]
 
+# Determine the fit parameters
 popt, pcov = curve_fit(linear_function, x_data, y_data)
 
+# Generate fit data for plotting
 x_fit = np.arange(1, 6, 0.01)
 y_fit = linear_function(x_fit, popt[0], popt[1])
 
+# Plot original data and the fit
 plt.plot(x_data, y_data, marker="x", markersize=10, linewidth=0)
 plt.plot(x_fit, y_fit, linewidth=2)
 plt.xlabel("Time spent learning Python (hours)", fontsize=12)
@@ -533,7 +538,7 @@ plt.show()
 
 \section{Exercises}
 	\subsection{Lennard-Jones potential}\label{LJ_excercise}
-		The Lennard-Jones potential is a model potential to describe the pair interaction between two atoms as a function of their separation,
+		The Lennard-Jones potential is a model potential which is used to describe the pair interaction between two atoms as a function of their separation,
 \begin{equation}u_{LJ}(r) = 4\epsilon \left [ \left (\frac{\sigma}{r} \right )^{12}- \left (\frac{\sigma}{r} \right )^{6} \right ]\end{equation}
 	where $r$ is the interparticle separation, $\epsilon$ is the well depth and $\sigma$ is the separation where the interaction strength zero. For atomic argon, $\epsilon = 3.4*^{-10} \mathrm{m}$ and $\sigma= 1.65*10^{-21} \mathrm{J}$.
 	
@@ -548,12 +553,12 @@ plt.show()
 		\label{fig:picircle}
 	\end{figure}
 
-	If we pick a series of random points inside the square then some will fall inside the circle and some will fall outside. The ratio of these two quantities will tell us the relative areas of the two shapes. From this it follows that we can calculate pi using this method.
+	If we pick a series of random points inside the square then some will fall inside the circle and some will fall outside. The ratio of these two quantities will tell us the relative areas of the two shapes. From this we can calculate pi.
 
 	How can we tell if a random point is inside the circle or not? Pythagorus' theorem tells us the hypotenuse of a right angled triangle. For a circle radius 1 we know that a point is inside the circle if:
 
 	\begin{equation}
-	\sqrt{a^2+b^2} <- 1,
+	\sqrt{a^2+b^2} <= 1,
 	\end{equation}
 
 	where $a$ and $b$ are the side lengths of the triangle. Since the circle is symmetric, we don't need the whole thing, just a quarter will do. This makes the generation of random numbers easier since we can generate numbers between 0 and 1 to put random coordinates inside a box of side length 1. This scheme is shown in Fig. \ref{fig:piarc}
