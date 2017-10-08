@@ -20,7 +20,7 @@ Division in Python 3 gives a decimal answer as you would expect.
 	\subsection{Variables}\label{types}
 		We can store values in variables. You can think of these as ``buckets'' which hold values. You can call variables anything you like as long as it starts with a letter and uses only alphanumeric characters or underscore. In addition it is a very bad idea to use variable names that are reserved keywords elsewhere in Python such as \texttt{print}, \texttt{sum} or \texttt{list}.
 
-The \texttt{print} function prints things to the screen. Here we assign a value to the variable ``a'' uing the equals sign and print variable `a''.
+The \texttt{print} function prints things to the screen. Here we assign a value to the variable ``a'' using the equals sign and print variable `a''.
 		\begin{lstlisting}[language=Python]
 a = 6 + 3
 print(a)
@@ -100,7 +100,7 @@ print (eric_the_list)
 		\begin{verbatim}
 > [3, 5, 7, 9]\end{verbatim}
 	\subsection{User input}
-		Somtimes it is useful to accept some user input while the program is running and operate on this input. This can be achieved with the input command.
+		Sometimes it is useful to accept some user input while the program is running and operate on this input. This can be achieved with the input command.
 		\begin{lstlisting}[language=Python]
 person_name = input("What is your name?")
 print("Hello " + person_name)\end{lstlisting}
@@ -116,7 +116,7 @@ print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 > Enter a number: 
 >> 42
 > Two more than your number is: 42.0\end{verbatim}
-\begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, write code to print a list of integers betwen lower and upper bounds given by the user.\end{task}
+\begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, write code to print a list of integers between lower and upper bounds given by the user.\end{task}
 	\subsection{Flow control}
 		\subsubsection{If statements}
 		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values supplied to them then this can make them much more powerful. The \texttt{if} statement is the most simple of these flow control tools.
@@ -149,11 +149,11 @@ elif num_penguins == 10:
 else:
 	print("This statement should never be printed")\end{lstlisting}
 		\begin{verbatim}> That is quite a lot of penguins\end{verbatim}
-As with the \texttt{if} statement, syntactically the \texttt{elif} and \texttt{elise} statements are finished with a colon (as are all flow control statments).	
+As with the \texttt{if} statement, syntactically the \texttt{elif} and \texttt{else} statements are finished with a colon (as are all flow control statements).	
 
-It is important to understand the distinction between comparions and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
+It is important to understand the distinction between comparisons and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
 		\begin{task}Change the above code so that num\_penguins is input by the user when the program is running.\end{task}
-		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relvent message depending on whether or not they are equal.\end{task}
+		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relevant message depending on whether or not they are equal.\end{task}
 		\begin{task} Write a program that asks for the users name, compliments them if it begins with the letter ``P'', insults them if the name is ``Peter'' and otherwise repeats the name back again.\end{task}
 		\begin{advancedtask}Think about sanitising the user input so that no possible user input can cause an error. Think about users inputting non-alphabetic characters and the case of the characters (PETER should be accepted).\end{advancedtask}
 
@@ -178,7 +178,7 @@ for loop_number in [3, 4, 5, 6]:
 > 5
 > 6
 \end{verbatim}
-		This example shws that the number of iterations of the foor loop is controlled by the number of elements in the list and not what those elements are, this means you can loop over any arbitrary list, even a list of strings.
+		This example shows that the number of iterations of the for loop is controlled by the number of elements in the list and not what those elements are, this means you can loop over any arbitrary list, even a list of strings.
 
 Remember that the \texttt{range} function can be used to generate lists. This means that instead of 
 \begin{lstlisting}[language=Python]
@@ -188,12 +188,12 @@ for loop_number in [3, 4, 5, 6]:
 \begin{lstlisting}[language=Python]
 for loop_number in range(3, 7):
 \end{lstlisting}
-Some detail about the \texttt{range} function was omitted earier. The \texttt{range} function creates a special range object. Previously we have converted this to a list using the \texttt{list} function. However, in this case by using the range object with the for statement directly the range object is acting as a generator. This means that for each iteration of the for loop it generates the next number in the sequence. Since only one number at a time is held in memory as opposed to holding the whole list in memory, this increases efficiency when iterating through very large lists.
+Some detail about the \texttt{range} function was omitted earlier. The \texttt{range} function creates a special range object. Previously we have converted this to a list using the \texttt{list} function. However, in this case by using the range object with the for statement directly the range object is acting as a generator. This means that for each iteration of the for loop it generates the next number in the sequence. Since only one number at a time is held in memory as opposed to holding the whole list in memory, this increases efficiency when iterating through very large lists.
 
 		\begin{task}Write a program that asks the user for a number n and prints the sum of the numbers 1 to n.\end{task}
 		\begin{task}Modify the previous program so it only sums odd numbers from 1 to n.\end{task}
 		\subsubsection{While loops}
-		Sometimes it is useful to have a conditional loop. A while loop, repeats a process untill a condition is met.
+		Sometimes it is useful to have a conditional loop. A while loop, repeats a process until a condition is met.
 \begin{lstlisting}[language=Python]
 secret_number = 4
 user_number = 0
@@ -230,7 +230,7 @@ print("Pi is: ", pi)\end{lstlisting}
 		\begin{task}Program a game of higher or lower. Generate a random integer between 1 and 100. Allow the user to input a guess and tell them if the guess is too high or too low until they guess correctly.\end{task}		
 
 	\subsection{Subroutines}
-			Python has many built in functions like \texttt{input}, and \texttt{random}. You can tell they are functions as they take arguments (the bit in brackets after the function name). We can define our own functions called subroutines. When programs begin to get larger it can be convenient to split the program up into smaller subsections as this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine is a collection of code that is united under one title that can be ``called'' from elsewhere. 
+			When programs begin to get larger it can be convenient to split the program up into smaller subsections as this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine, also commonly called a function, is a collection of code that is united under one title that can be ``called'' from elsewhere. Python has many built in functions like \texttt{input}, and \texttt{random}.
 			\begin{lstlisting}[language=Python]
 def hungarian_phrasebook():
 	print("My hovercraft is full of eels.")
@@ -241,9 +241,9 @@ for i in range(0, 2):
 			> My hovercraft is full of eels
 			\end{verbatim}
 
-In this example lines 1 and 2 define the function. The code in the function does not run until it is called in line 4. When the program runs it first saves the function \texttt{hungarian\_phrasebook} to memory and then begins executing the rest of the code on line 3. 
+In this example lines 1 and 2 define the subroutine. The code in the subroutine does not run until it is called in line 4. When the program runs it first saves the subroutine \texttt{hungarian\_phrasebook} to memory and then begins executing the rest of the code on line 3. 
 
-While this does break up the code somewhat, the function is not very useful since it does exactly the same thing each time it is called. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the function called an argument.
+While this does break up the code somewhat, the subroutine is not very useful since it does exactly the same thing each time it is called. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the subroutine called an argument.
 
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -254,9 +254,9 @@ adding_six(14)\end{lstlisting}
 			\begin{verbatim}> 9
 				> 20\end{verbatim}
 
-				Here on line 1 we define the function \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this function is called it must be given an argument. 
+				Here on line 1 we define the subroutine \texttt{adding\_six} to have the argument \texttt{input\_value}, whenever this subroutine is called it must be given an argument. 
 
-It is a common convention to use a function called main as the entry point of the code. This means that the code is run starting in main and then splits off into other subroutines. Note that you must remember to call main as seen in line 8. If you dont call main then Python will add all of the subroutines to its memory and then finish without running them!
+It is a common convention to use a subroutine called \texttt{main}' as the entry point of the code. This means that the code is run starting in \texttt{main} and then splits off into other subroutines. Note that you must remember to call \texttt{main} as seen in line 8. If you don't call \texttt{main} then Python will add all of the subroutines to its memory and then finish without running them!
 				
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
@@ -290,6 +290,8 @@ main()\end{lstlisting}
 			\begin{verbatim}> [7, 8, 9, 10]\end{verbatim}
 			We pass each value of ``number\_list'' into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into ``number\_list'', replacing the original value. 
 
+			The distinction between a subroutine and function is not clear and varies depending on which programming language you are talking about. Generally a function is a section of callable code that returns a value while a subroutine does not return a value. Strictly speaking, all subsections of code in Python are functions since they all return a value regardless of whether the return keyword is used. If a function does not explicitly return a value then it returns the number zero to indicate successful completion of the function. For the rest of this tutorial, the words function and subroutine are used interchangeably.
+
 			With larger programs it can be convenient to split subroutines up into entirely different files. For example, if we have some simulation code to run a numerical simulation it would be sensible to split any analysis code off into a separate file. If we have a file called \textit{main.py} and another file called \textit{analysis.py} (in the same directory) containing the subroutine \texttt{do\_analysis} then \textit{main.py} might look like:
 \begin{lstlisting}[language=Python]
 import analysis
@@ -307,7 +309,7 @@ main()\end{lstlisting}
 By importing the file \textit{analysis} in the first line, we can call any functions it contains as if they were in the same file. The syntax is the file name, a period (.) and then the function name.
 
 While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Also important to organisation is adding comments. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids anyone who reads the code in understanding the function of a particular piece of code. Commenting code is another important coding habit.
-\begin{task}Do the excercise in section \ref{LJ_excercise}.\end{task}
+\begin{task}Do the exercise in section \ref{LJ_excercise}.\end{task}
 \begin{advancedtask} Download a list of names from \url{https://angrypenguin.000webhostapp.com/sample_data3.txt}. Sort these names into alphabetical order. Give each name a value by summing the letter values in the name where A = 1, B = 2... Z = 26. Multiply the name value by the position of the name in the list to get a score for each name. What is the total sum of all of the name scores?\end{advancedtask}
 
 \section{NumPy}
@@ -329,7 +331,7 @@ print(end_time-start_time)\end{lstlisting}
 	\begin{verbatim}> 2.05770301819\end{verbatim}
 
 	Note the use of the \texttt{time} function in this example. This is a very simple way to assess the speed of code using the system clock. It is not the canonical way to measure performance but like many things in this short tutorial, it is simple and effective if not the best way to do it.
-	If we think about it then that is fairly impressive, it has been through that loop 10,000,000 times in 2 seconds. But can we make it faster? One key concept in writing speedy code is vectorisation, instead of a loop we want to apply the transformation to every element in the list simultaneously. Lets try that:
+	If we think about it then that is fairly impressive, it has been through that loop 10,000,000 times in 2 seconds. But can we make it faster? One key concept in writing speedy code is vectorisation, instead of a loop we want to apply the transformation to every element in the list simultaneously. Let's try that:
 
 	\begin{lstlisting}[language=Python]
 short_list = range(0, 5)
@@ -365,7 +367,7 @@ print(short_np_array)\end{lstlisting}
 > [1 2 3 4 5]
 	\end{verbatim}
 
-	The NumPy function \texttt{array} generates a NumPy array. It can take a few diffferent types of input but in this case we passed it a regular Python list. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printed is that while Python lists have commas seperating the values, a NumPy array doesn't. One of the big differences between lists and NumPy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
+	The NumPy function \texttt{array} generates a NumPy array. It can take a few different types of input but in this case we passed it a regular Python list. This is a type of object like a Python list which holds a series of values. The only difference we see in the output that is printed is that while Python lists have commas separating the values, a NumPy array doesn't. One of the big differences between lists and NumPy arrays underneath is that arrays allow vector operations. This means mathematical operations can be applied to the whole array simultaneously and quickly.
 
 	\begin{lstlisting}[language=Python]
 from time import time
@@ -381,12 +383,12 @@ print(end_time-start_time)\end{lstlisting}
 	\begin{verbatim}
 > 0.0694818496704 \end{verbatim}
 
-	The functon \texttt{arange} is a NumPy functon that is like \texttt{range} but generates a NumPy array instead of a Python list. Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
+	The function \texttt{arange} is a NumPy function that is like \texttt{range} but generates a NumPy array instead of a Python list. Using NumPy arrays instead of lists provides an impressive speedup of nearly 30 times for this simple operation. There are many other useful functions in NumPy and a lot of them make use of the NumPy array as a basic data structure.
 
-\begin{task}Generate a large Python list of data and using a loop take the sqaure root of each element in the list. Now compare the speed when looping through a NumPy array. Finally use the np.sqrt function (Google for how to use it) to vectorise the operation. How much faster is this?\end{task} 
+\begin{task}Generate a large Python list of data and using a loop take the square root of each element in the list. Now compare the speed when looping through a NumPy array. Finally use the np.sqrt function (Google for how to use it) to vectorise the operation. How much faster is this?\end{task} 
 
 \section{Reading and writing text files}
-The amount of data that it is possible to eneter by hand is very limited. Often in scientific computing applications the data generated by instruments can be saved to files from where it can be read directly into Python. Some instruments (for example Leica microscopes) may store their data in a propritery format that is not easy to read. There may by Python libraries which enable you to read the files (this is true for the Leica lif format) or you may have to use some of the manufacturers software to export the data to a simpler format such as a csv or plain text file.
+The amount of data that it is possible to enter by hand is very limited. Often in scientific computing applications the data generated by instruments can be saved to files from where it can be read directly into Python. Some instruments (for example Leica microscopes) may store their data in a proprietary format that is not easy to read. There may by Python libraries which enable you to read the files (this is true for the Leica lif format) or you may have to use some of the manufacturers software to export the data to a simpler format such as a csv or plain text file.
 	\subsection{Reading from files}
 		The basic way to read in a text file is with the \texttt{open} function. This opens an iterable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
 		\begin{lstlisting}[language=Python]
@@ -399,13 +401,13 @@ input_file.close()
 		Next, data is always read in as a string whether it is characters or digits. This means that to do mathematical operations on numerical data it must implicitly be converted to a float or int type. Be careful though, this is a forceful way of doing things and if the program tries to convert a string into an integer then it will crash. This means that this method is only suitable for input files that we are sure are solely numeric unless some extra checks are added.\\
 		The next point is that we close the file object when we are finished reading from it. This is important as Python is connected to the file when the file object is open. If you don't disconnect, then the file link may stay open in the background after Python finishes which may cause problems accessing the file later. Just like a fridge, you need to open the door before taking things in or out but must remember to close the door afterwards.
 
-		Python has a particular style which is not very important for these workshops but is worth discussion in case you want to study the language further. The standard coding style and developments to Python are set out in a series of documents called the Python Enhancement Proposals (PEPs). Some of these documents are very serious and boring proposals while others are poems which set out the reccomended style of Python (PEP 20 and 8 are worth a read). In summary, the principle of good Python is readability. The code that you write should be as understandable as possible. Code that follows this principle is called ``Pythonic''. There are certain common Pythonic ideoms one of which is seen when handling files. Instead of explicitly opening and closing a file we can use a while loop to do it implicitly
+		Python has a particular style which is not very important for these workshops but is worth discussion in case you want to study the language further. The standard coding style and developments to Python are set out in a series of documents called the Python Enhancement Proposals (PEPs). Some of these documents are very serious and boring proposals while others are poems which set out the recommended style of Python (PEP 20 and 8 are worth a read). In summary, the principle of good Python is readability. The code that you write should be as understandable as possible. Code that follows this principle is called ``Pythonic''. There are certain common Pythonic idioms one of which is seen when handling files. Instead of explicitly opening and closing a file we can use a while loop to do it implicitly
 		\begin{lstlisting}[language=Python]
 with open("example_data_file.txt", 'r') as input_file:
 	for line in input_file:
 		data_list = data_list.append(float(line))
 \end{lstlisting}	
-This way the file is opened at the \texttt{with} statement and kept open for all of the indented statements. It doesnt have to be explicitly closed as it is done automatically when the \texttt{with} statement is left.
+This way the file is opened at the \texttt{with} statement and kept open for all of the indented statements. It doesn't have to be explicitly closed as it is done automatically when the \texttt{with} statement is left.
 
 At the end of the day it is up to you. While there are some commonly adopted standards, you can do whatever you think makes your code the most readable. Your style will certainly change and your code will become more beautiful as you learn more.
 
@@ -420,7 +422,7 @@ with open("example_data_file.txt", 'w') as output_file:
 		output_file.write(str(my_calculated_data[number]) + "\n")
 \end{lstlisting}	
 	Here the \texttt{`w'} in the \texttt{open} function is opening ``example\_data\_file.txt'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
-Note again that file operations are done with strings so numbers have to be excplicitly converted before writing to the file. But what is the \texttt{``\textbackslash{}n''} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
+Note again that file operations are done with strings so numbers have to be explicitly converted before writing to the file. But what is the \texttt{``\textbackslash{}n''} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
 
 \begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
 
@@ -450,7 +452,7 @@ np.savetxt("output.txt", my_clever_data)\end{lstlisting}
 
 \section{Matplotlib}
 	\subsection{Histograms}
-		There is a very powerful package called Matplotlib that provides functions for plotting graphs. Matplotlib is used across academia as well as elsewhere for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to sommething like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. You can also output files in vector format which is required for submission to most journals. In addition, once you have a nice set of templates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
+		There is a very powerful package called Matplotlib that provides functions for plotting graphs. Matplotlib is used across academia as well as elsewhere for producing publication quality figures. At first it might seem like a lot of effort to learn an entirely new script based method for plotting compared to something like Excel but it is worth it. Matplotlib graphs look much better than Excel ones, they are much more customisable and more powerful. You can also output files in vector format which is required for submission to most journals. In addition, once you have a nice set of templates set up you can use them all through your academic career, slightly modifying them to suit whatever data you have.
 		\begin{lstlisting}[language=Python]
 import matplotlib.pyplot as plt
 %matplotlib inline
@@ -463,7 +465,7 @@ plt.show()\end{lstlisting}
 		First we import the Matplotlib library, then the command \texttt{\%matplotlib inline} tells Jupyter Notebook to plot the graphs in the workbook rather than opening them in another window. You only need this command once per session so it is common to put it at the top with the \texttt{import} commands. Then we generate a list of numbers and plot them as a histogram.
 		\begin{task}What does the bins argument do? What happens if you leave it out entirely?\end{task}
 		\begin{task}Generate 1000 random numbers between 0 and 10 using a for loop and append them to a list. Plot a histogram of this list.\end{task}
-		\begin{task}Complete the excercsie in section \ref{pi_exercise}.\end{task}
+		\begin{task}Complete the exercise in section \ref{pi_exercise}.\end{task}
 
 	\subsection{Line Plots}
 		Line plots are made in a similar way to histograms,
@@ -478,9 +480,9 @@ plt.savefig("confuseacat.pdf")
 plt.show()\end{lstlisting}
 		\includegraphics[scale=0.8]{images/confuseacat}
 
-You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives detials about the marker and line types and other things linke how to change the line and marker colours.
+You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives details about the marker and line types and other things like how to change the line and marker colours.
 \begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
-Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficent or just wrong! You need to distinguish betweeen these and pick out the right commands for your task.
+Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficient or just wrong! You need to distinguish between these and pick out the right commands for your task.
 \begin{task}Using sample\_data2 from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}, read in this data and plot as a scatter plot.\end{task}
 
 \section{Fitting Data}
@@ -492,14 +494,14 @@ def linear_function(x, m, c):
 	return m * x + c
 \end{lstlisting}
 
-Then once you have some data you can use the \texttt{curve\_fit} function from scipy.optimize to find the optimal fitting paramters.
+Then once you have some data you can use the \texttt{curve\_fit} function from scipy.optimize to find the optimal fitting parameters.
 \begin{lstlisting}[language=Python]
 x_data = [1, 2, 3, 4, 5, 6]
 y_data = [3.2, 4.9, 7.1, 8.7, 10.9, 13.2]
 
 popt, pcov = curve_fit(linear_function, x_data, y_data)
 \end{lstlisting}
-``popt'' stores the optimal fitting paramters while ``pconv'' stores the covariance of the fit.
+``popt'' stores the optimal fitting parameters while ``pconv'' stores the covariance of the fit.
 Now to plot this fit we have to generate some x-values and determine the corresponding y-values using the parameters we have determined.
 \begin{lstlisting}[language=Python]
 x_fit = np.arange(1, 6, 0.01)
@@ -555,7 +557,7 @@ plt.show()
 
 	If we pick a series of random points inside the square then some will fall inside the circle and some will fall outside. The ratio of these two quantities will tell us the relative areas of the two shapes. From this we can calculate pi.
 
-	How can we tell if a random point is inside the circle or not? Pythagorus' theorem tells us the hypotenuse of a right angled triangle. For a circle radius 1 we know that a point is inside the circle if:
+	How can we tell if a random point is inside the circle or not? The Pythagorean theorem tells us the hypotenuse of a right angled triangle. For a circle radius 1 we know that a point is inside the circle if:
 
 	\begin{equation}
 	\sqrt{a^2+b^2} <= 1,
