@@ -114,9 +114,18 @@ user_input_number = float(input("Enter a number: "))
 print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 		\begin{verbatim}
 > Enter a number: 
->> 42
+>> 40
 > Two more than your number is: 42.0\end{verbatim}
 \begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, write code to print a list of integers between lower and upper bounds given by the user.\end{task}
+If you want to use only part of a string then strings can be sliced like lists:
+		\begin{lstlisting}[language=Python]
+name = "The Silly Olympics"
+print(name[0:7])
+print (name[10:])\end{lstlisting}
+\begin{verbatim}
+> The Sil
+> Olympics\end{verbatim}
+If you leave a slice without a second number as in the second example here then the slice will continute until the end of the string. This lets you slice up to the end of the string without having to know exactly how long the string is. This is also true for lists. More about list (and string) slicing can be found in the official Python documentation \url{https://docs.python.org/3/tutorial/introduction.html#lists}.
 	\subsection{Flow control}
 		\subsubsection{If statements}
 		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values supplied to them then this can make them much more powerful. The \texttt{if} statement is the most simple of these flow control tools.
