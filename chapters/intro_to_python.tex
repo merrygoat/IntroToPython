@@ -401,6 +401,7 @@ The amount of data that it is possible to enter by hand is very limited. Often i
 	\subsection{Reading from files}
 		The basic way to read in a text file is with the \texttt{open} function. This opens an iterable file object which can be iterated with a for loop to extract each line. For a simple data file with a single column of numbers, one approach might be
 		\begin{lstlisting}[language=Python]
+data_list = []
 input_file = open("example_data_file.txt", 'r')
 for line in input_file:
 	data_list = data_list.append(float(line))
