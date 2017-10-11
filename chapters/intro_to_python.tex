@@ -206,12 +206,12 @@ Some detail about the \texttt{range} function was omitted earlier. The \texttt{r
 \begin{lstlisting}[language=Python]
 secret_number = 4
 user_number = 0
-
+user_number = int(input("Guess my number by entering an integer between 1 and 10: "))
 while secret_number != user_number:
-	user_number = int(input("Guess my number by entering an integer between 1 and 10: "
-	print("No, that's not it, guess again.")
+	print("No, that's not it, guess again.")	
+	user_number = int(input("Guess my number by entering an integer between 1 and 10: "))	
 print("Yes, that's it.")\end{lstlisting}
-		\begin{verbatim} > Guess my number by entering an integer between 1 and 10: 
+		\begin{verbatim}> Guess my number by entering an integer between 1 and 10: 
 >> 7
 > No, that's not it, guess again.
 > Guess my number by entering an integer between 1 and 10:
