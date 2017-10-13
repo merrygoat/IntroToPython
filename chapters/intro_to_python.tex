@@ -73,7 +73,7 @@ print(numberlist[0:3])\end{lstlisting}
 		\end{verbatim}
 		Notice how the first command returns 5. This is because Python lists (and many things in programming) start counting at zero. This means asking for the zeroth element would return 1.
 		The second command returns only three values. This is because the lower bound is inclusive but the upper bound is exclusive (for mostly the same reasons that things start counting at zero not one). 
-		The append command will add things onto the end of a list.
+		The append command will add things onto the end of a list. The append command is a method of the list object so acts on the list directly and the result does not need to be assigned to a variable as for a math operation like $\mathrm{a} = 5 + 3$.
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 5]
 numberlist.append(8)
@@ -117,7 +117,7 @@ print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 >> 40
 > Two more than your number is: 42.0\end{verbatim}
 \begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, write code to print a list of integers between lower and upper bounds given by the user.\end{task}
-If you want to use only part of a string then strings can be sliced like lists:
+If you want to use only part of a string then strings can be sliced like lists,
 		\begin{lstlisting}[language=Python]
 name = "The Silly Olympics"
 print(name[0:7])
@@ -171,7 +171,7 @@ It is important to understand the distinction between comparisons and assignment
 		For loops are a flow control tool that can be used to repeat a command multiple times by iterating over the members of a sequence.
 		\begin{lstlisting}[language=Python]
 list_of_numbers = []
-for loop_number in [0, 1, 2, 3, 4]:
+for loop_number in range(0, 5):
 	list_of_numbers.append(7)
 print(list_of_numbers)\end{lstlisting}
 		\begin{verbatim}> [7, 7, 7, 7, 7]\end{verbatim}
@@ -179,7 +179,7 @@ print(list_of_numbers)\end{lstlisting}
 		\begin{task}What would happen if the \texttt{print} line was also indented?\end{task}
 		Each time the for loop is evaluated the next value in the sequence is stored in the ``loop\_number'' variable. This allows you to count
 		\begin{lstlisting}[language=Python]
-for loop_number in [3, 4, 5, 6]:
+for loop_number in range(3, 7):
 	print(loop_number)\end{lstlisting}
 \begin{verbatim}
 > 3
@@ -189,18 +189,10 @@ for loop_number in [3, 4, 5, 6]:
 \end{verbatim}
 		This example shows that the number of iterations of the for loop is controlled by the number of elements in the list and not what those elements are, this means you can loop over any arbitrary list, even a list of strings.
 
-Remember that the \texttt{range} function can be used to generate lists. This means that instead of 
-\begin{lstlisting}[language=Python]
-for loop_number in [3, 4, 5, 6]:
-\end{lstlisting}
-		it is easier to use,
-\begin{lstlisting}[language=Python]
-for loop_number in range(3, 7):
-\end{lstlisting}
-Some detail about the \texttt{range} function was omitted earlier. The \texttt{range} function creates a special range object. Previously we have converted this to a list using the \texttt{list} function. However, in this case by using the range object with the for statement directly the range object is acting as a generator. This means that for each iteration of the for loop it generates the next number in the sequence. Since only one number at a time is held in memory as opposed to holding the whole list in memory, this increases efficiency when iterating through very large lists.
-
+Some detail about the \texttt{range} function was omitted earlier. The \texttt{range} function creates a special range object. Previously we have converted this to a list using the \texttt{list} function. However, in these examples by using the range object with the \texttt{for} statement directly, the range object is acting as a generator. This means that for each iteration of the \texttt{for} loop it generates the next number in the sequence. Since only one number at a time is held in memory as opposed to holding the whole list in memory, this increases efficiency when iterating through very large lists.
 		\begin{task}Write a program that asks the user for a number n and prints the sum of the numbers 1 to n.\end{task}
 		\begin{task}Modify the previous program so it only sums odd numbers from 1 to n.\end{task}
+
 		\subsubsection{While loops}
 		Sometimes it is useful to have a conditional loop. A while loop, repeats a process until a condition is met.
 \begin{lstlisting}[language=Python]
@@ -217,7 +209,7 @@ print("Yes, that's it.")\end{lstlisting}
 > Guess my number by entering an integer between 1 and 10:
 >> 4
 > Yes, that's it.\end{verbatim}
-		The comparison operator != checks whether something is not equal. While the two values are not equal the loop will repeat. As soon as they are equal, the loop will exit and the next command will be printed.
+		The comparison operator != checks whether something is not equal. While the two values are not equal the loop will repeat. As soon as they are equal, the loop will exit and the next command will be executed.
 \begin{advancedtask}How many integer prime numbers are there under 10,000? Hint: \url{https://en.wikipedia.org/wiki/Generating_primes}\end{advancedtask}
 
 	\subsection{Imports}
@@ -288,15 +280,15 @@ def adding_six(input_value):
 	return input_value + 6
 
 def main():
-	number_list = [0, 1, 2, 3]
+	number_list = [12, 41, 8, 2]
 	
-	for i in number_list:
+	for i in range(0, len(num_list)):
 		number_list[i] = adding_six(number_list[i])
 	print(number_list)
 			
 main()\end{lstlisting}
 
-			\begin{verbatim}> [7, 8, 9, 10]\end{verbatim}
+			\begin{verbatim}> [18, 47, 15, 8]\end{verbatim}
 			We pass each value of ``number\_list'' into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into ``number\_list'', replacing the original value. 
 
 			The distinction between a subroutine and function is not clear and varies depending on which programming language you are talking about. Generally a function is a section of callable code that returns a value while a subroutine does not return a value. Strictly speaking, all subsections of code in Python are functions since they all return a value regardless of whether the return keyword is used. If a function does not explicitly return a value then it returns the number zero to indicate successful completion of the function. For the rest of this tutorial, the words function and subroutine are used interchangeably.
@@ -307,7 +299,8 @@ import analysis
 
 def get_random_number()
 	# Chosen by fair dice roll, guaranteed to be random
-	return 4
+	random_number = 4
+	return random_number
 	
 def main()
 	for counter in range(0, 100):
@@ -404,7 +397,7 @@ The amount of data that it is possible to enter by hand is very limited. Often i
 data_list = []
 input_file = open("example_data_file.txt", 'r')
 for line in input_file:
-	data_list = data_list.append(float(line))
+	data_list.append(float(line))
 input_file.close()
 \end{lstlisting}	
 		There are a couple of interesting points here. Firstly, we open the file with the argument \texttt{`r'}. This means read mode, we can read data from the file but not write to it.\\
@@ -428,10 +421,10 @@ At the end of the day it is up to you. While there are some commonly adopted sta
 		\begin{lstlisting}[language=Python]
 my_calculated_data = [4, 5, 6, 7]
 with open("example_data_file.txt", 'w') as output_file:
-	for number in my_calculated_data:
+	for number in range(0, len(my_calculated_data)):
 		output_file.write(str(my_calculated_data[number]) + "\n")
 \end{lstlisting}	
-	Here the \texttt{`w'} in the \texttt{open} function is opening ``example\_data\_file.txt'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`wa'}.
+	Here the \texttt{`w'} in the \texttt{open} function is opening ``example\_data\_file.txt'' in write mode. This means that if the file does not exist on disk it will be created and if it already exists the file will be overwritten. If you want to write to a file that already exists then you need to open in write append mode, \texttt{`a'}.
 Note again that file operations are done with strings so numbers have to be explicitly converted before writing to the file. But what is the \texttt{``\textbackslash{}n''} at the end? This is the special character for a new line. This ensures that each of our numbers will be printed to a new line.
 
 \begin{task}Read in the dataset from the last task, multiply each number by two and save it to a new text file.\end{task}
