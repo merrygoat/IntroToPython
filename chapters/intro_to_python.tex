@@ -312,7 +312,7 @@ By importing the file \textit{analysis} in the first line, we can call any funct
 
 While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Also important to organisation is adding comments. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids anyone who reads the code in understanding the function of a particular piece of code. Commenting code is another important coding habit.
 \begin{task}Do the exercise in section \ref{LJ_excercise}.\end{task}
-\begin{advancedtask} Download a list of names from \url{https://angrypenguin.000webhostapp.com/sample_data3.txt}. Sort these names into alphabetical order. Give each name a value by summing the letter values in the name where A = 1, B = 2... Z = 26. Multiply the name value by the position of the name in the list to get a score for each name. What is the total sum of all of the name scores?\end{advancedtask}
+\begin{advancedtask} Download a list of names from \url{https://merrygoat.github.io/sample_data_3.txt}. Sort these names into alphabetical order. Give each name a value by summing the letter values in the name where A = 1, B = 2... Z = 26. Multiply the name value by the position of the name in the list to get a score for each name. What is the total sum of all of the name scores?\end{advancedtask}
 
 \section{NumPy}
 	\subsection{NumPy arrays and vectorisation}
@@ -414,7 +414,7 @@ This way the file is opened at the \texttt{with} statement and kept open for all
 
 At the end of the day it is up to you. While there are some commonly adopted standards, you can do whatever you think makes your code the most readable. Your style will certainly change and your code will become more beautiful as you learn more.
 
-\begin{task}Download a sample data file from: \url{https://angrypenguin.000webhostapp.com/sample_data1.txt}. Read the data in to Python and print the numbers to screen.\end{task}
+\begin{task}Download a sample data file from: \url{https://merrygoat.github.io/sample_data_1.txt}. Read the data in to Python and print the numbers to screen.\end{task}
 
 	\subsection{Writing to files}
 		Writing to files is similar to reading from files but this time we have to open the file in write mode
@@ -445,7 +445,7 @@ Here we use Matplotlib to plot the data on a graph, the details are not importan
 
 Since \texttt{loadtxt} reads the data into a NumPy array it accepts only numbers as input. If you need to read in a mixture of text and numbers this is probably better done with a Python list and a basic file read loop. If you have numerical data with a more complex layout such as missing values then \texttt{genfromtxt} is a more complex but flexible file reading function.
 
-\begin{task}Download a sample data file from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}. Read in this data using \texttt{loadtxt} and print it to the screen.\end{task}
+\begin{task}Download a sample data file from \url{https://merrygoat.github.io/sample_data_2.txt}. Read in this data using \texttt{loadtxt} and print it to the screen.\end{task}
 
 	\subsection{NumPy savetxt}
 		In the same way as before, if you just have a simple NumPy array of data, you can quickly save to a text file with NumPy \texttt{savetxt},
@@ -489,7 +489,7 @@ plt.show()\end{lstlisting}
 You can read the full specification for the plot function online: \url{https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot}. This gives details about the marker and line types and other things like how to change the line and marker colours.
 \begin{task}Adjust the axis range of the graph so it shows the percentage axis from 0 to 100. Google something like ``matplotlib axis range example'' to find the correct syntax.\end{task}
 Googling things is a very important skill that needs practice. There is always more than one way to do a simple task like this so have a look at a few different ones and see what works best. Beware that some of the examples you will find are hard to understand, inefficient or just wrong! You need to distinguish between these and pick out the right commands for your task.
-\begin{task}Using sample\_data2 from \url{https://angrypenguin.000webhostapp.com/sample_data2.txt}, read in this data and plot as a scatter plot.\end{task}
+\begin{task}Using sample\_data2 from \url{https://merrygoat.github.io/sample_data_2.txt}, read in this data and plot as a scatter plot.\end{task}
 
 \section{Fitting Data}
 	Fitting data is easy in something like Origin but this is a poor approach if you have to fit 100 datasets. As with everything in programming, it takes a little time to set up a script but if you have to run it 100 times then you can save a lot of time.
@@ -542,7 +542,7 @@ plt.xlabel("Time spent learning Python (hours)", fontsize=12)
 plt.ylabel("Love of Python (arbitrary units)", fontsize=12)
 plt.show()
 \end{lstlisting}
-\begin{task}Using the data from sample\_data2 (\url{https://angrypenguin.000webhostapp.com/sample_data2.txt}) fit and plot a log curve to the data. What are the coefficients?\end{task}
+\begin{task}Using the data from sample\_data2 (\url{https://merrygoat.github.io/sample_data_2.txt}) fit and plot a log curve to the data. What are the coefficients?\end{task}
 
 \section{Exercises}
 	\subsection{Lennard-Jones potential}\label{LJ_excercise}
