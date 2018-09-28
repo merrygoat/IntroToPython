@@ -9,8 +9,6 @@ Division in Python 3 gives a decimal answer as you would expect.
 		\begin{lstlisting}[language=Python]
 5/2\end{lstlisting}
 		\begin{verbatim}> 2.5\end{verbatim}
-
-		Beware the division operator in Python 2 (you should all be using Python 3!). The above would give an integer division and so return an answer of 2.
 		
 		The symbol for power is a double star. A square root can be achieved by raising to the power of 1/2.
 		\begin{lstlisting}[language=Python]
@@ -46,7 +44,7 @@ song = "I'm a lumberjack and I'm OK" + 1\end{lstlisting}
 
 TypeError: cannot concatenate 'str' and 'int' objects\end{verbatim}
 
-Strings can be concatenated though using the plus symbol.	
+Strings can be concatenated using the plus symbol.	
 		\begin{lstlisting}[language=Python]
 line_one = "I'm a lumberjack and I'm OK, "
 line_two = "I work all night and I work all day"
@@ -57,7 +55,7 @@ print(song)\end{lstlisting}
 		\end{verbatim}
 
 	\subsection{Lists}
-	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. Lists are just another type of variable, so as before you can name them anything you like as long as you follow the above variable naming rules.
+	Lists are a simple data structure that allow the storage of multiple values. Lists are designated by square brackets. Lists are just another type of variable, so they follow the same variable naming rules.
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 5]
 print(numberlist)\end{lstlisting}
@@ -72,8 +70,9 @@ print(numberlist[0:3])\end{lstlisting}
 			> [1, 2, 3]
 		\end{verbatim}
 		Notice how the first command returns 5. This is because Python lists (and many things in programming) start counting at zero. This means asking for the zeroth element would return 1.
-		The second command returns only three values. This is because the lower bound is inclusive but the upper bound is exclusive (for mostly the same reasons that things start counting at zero not one). 
-		The append command will add things onto the end of a list. The append command is a method of the list object so acts on the list directly and the result does not need to be assigned to a variable as for a math operation like $\mathrm{a} = 5 + 3$.
+		The second command returns only three values. This is because the lower bound is inclusive but the upper bound is exclusive (for mostly the same reasons that things start counting at zero not one).
+
+		The append command will add things onto the end of a list. The append command is a method of the list object so acts on the list directly and the result does not need to be assigned to a variable.
 		\begin{lstlisting}[language=Python]
 numberlist = [1, 2, 5]
 numberlist.append(8)
@@ -89,7 +88,7 @@ print(my_list)
 		\begin{verbatim}
 > [3, 4, 5]
 > [10, 15, 20, 25]\end{verbatim}
-		Note how the bounds of the \texttt{range} function work. As for list subscripting, the first value (3) is printed but not the last value (7).
+		Note how the bounds of the \texttt{range} function work. As for list subscripting, the first value (3) is printed but not the last value (6).
 
 Anywhere you put a value in your code you may use a variable of an appropriate type,
 \begin{lstlisting}[language=Python]
@@ -116,7 +115,7 @@ print("Two more than your number is: ", user_input_number+2)\end{lstlisting}
 > Enter a number: 
 >> 40
 > Two more than your number is: 42.0\end{verbatim}
-\begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, write code to print a list of integers between lower and upper bounds given by the user.\end{task}
+\begin{task}Using the \texttt{input}, \texttt{range}, \texttt{int} and \texttt{print} functions, ask the user fo lower and upper bounds and then print a list of integers between the two values.\end{task}
 If you want to use only part of a string then strings can be sliced like lists,
 		\begin{lstlisting}[language=Python]
 name = "The Silly Olympics"
@@ -125,8 +124,9 @@ print (name[10:])\end{lstlisting}
 \begin{verbatim}
 > The Sil
 > Olympics\end{verbatim}
-If you leave a slice without a second number as in the second example here then the slice will continute until the end of the string. This lets you slice up to the end of the string without having to know exactly how long the string is. This is also true for lists. More about list (and string) slicing can be found in the official Python documentation \url{https://docs.python.org/3/tutorial/introduction.html#lists}.
+If you leave a slice without a second number as in the second example above, the slice will continute until the end of the string. This lets you slice up to the end of the string without having to know exactly how long the string is. This is also true for lists. More about list (and string) slicing can be found in the official Python documentation \url{https://docs.python.org/3/tutorial/introduction.html#lists}.
 	\subsection{Flow control}
+	For this section we should try using a different IDE. Open a command prompt or terminal and type \texttt{spyder} to open up the Spyder IDE, it may be familiar if you have used MATLAB before. This interactive IDE allows you to edit your code in the left panel and then execute by pressing the run button in the top bar. The ouput is shown in the bottom right window. The top right window is an interactive help window which can provide syntax information for any Python function. There is nothing magic about spyder, you can still run all of this code in a Jupyter notebook (or write it in a text editor and run on the console) but an IDE can be easire to use, especially for bigger projects so see if you prefer it.
 		\subsubsection{If statements}
 		Programs can only carry out very simple tasks if they do the same thing every time. If programs are able to make decisions based on values supplied to them then this can make them much more powerful. The \texttt{if} statement is the most simple of these flow control tools.
 		
@@ -137,10 +137,10 @@ if penguins < 10:
 	print(penguins, " is less than 10.")
 else:
 	print(penguins, " is not less than 10.")
-print("This is printed regardless of the value of penguins.")\end{lstlisting}
+print("This is printed regardless of the number of penguins.")\end{lstlisting}
 		\begin{verbatim}
 > 4 is less than 10.
-> This is printed regardless of the value of penguins.\end{verbatim}	
+> This is printed regardless of the number of penguins.\end{verbatim}	
 		Note how the program flow is controlled by the indentation. The \texttt{if} statement  is evaluated and if True then the indented code is run and the else section is skipped. If the \texttt{if} statement  is evaluated and is False, the indented code is skipped and the code beneath the else statement is run. After the \texttt{if}  statement is fully evaluated the program flow returns to the next unindented statement. In this case the last sentence is always printed since it is outside of the \texttt{if} statement. Also the if statement is finished by a colon. This indicates where the question finishes.
 		
 		If you recall the discussion of types in section \ref{types}, you might have noticed that that the \texttt{print} function seems happy to combine a numeric and string type. This is because \texttt{print} is a special function which converts arguments to strings before printing them. It will only do this if the arguments are separated by a comma as above.
@@ -163,12 +163,12 @@ As with the \texttt{if} statement, syntactically the \texttt{elif} and \texttt{e
 It is important to understand the distinction between comparisons and assignment. Notice how on line 1 the assignment operator is one equals sign while on line 7 the comparison operator is two equals signs. The assignment assigns a value to a variable while the comparison operator is asking whether two values are equal.
 		\begin{task}Change the above code so that num\_penguins is input by the user when the program is running.\end{task}
 		\begin{task}Write a program that takes two numbers from user input, stores them in two variables and then checks whether the numbers are equal. You should display a relevant message depending on whether or not they are equal.\end{task}
-		\begin{task} Write a program that asks for the users name, compliments them if it begins with the letter ``P'', insults them if the name is ``Peter'' and otherwise repeats the name back again.\end{task}
+		\begin{task} Write a program that asks for the users name, compliments them if it begins with the letter ``P'', insults them if the name is ``Peter'' and if neither or true, repeats the name back again.\end{task}
 		\begin{advancedtask}Think about sanitising the user input so that no possible user input can cause an error. Think about users inputting non-alphabetic characters and the case of the characters (PETER should be accepted).\end{advancedtask}
 
 
 		\subsubsection{For loops}
-		For loops are a flow control tool that can be used to repeat a command multiple times by iterating over the members of a sequence.
+		\texttt{for} loops are a flow control tool that can be used to repeat a command multiple times by iterating over the members of a sequence.
 		\begin{lstlisting}[language=Python]
 list_of_numbers = []
 for loop_number in range(0, 5):
@@ -190,7 +190,7 @@ for loop_number in range(3, 7):
 		This example shows that the number of iterations of the for loop is controlled by the number of elements in the list and not what those elements are, this means you can loop over any arbitrary list, even a list of strings.
 
 Some detail about the \texttt{range} function was omitted earlier. The \texttt{range} function creates a special range object. Previously we have converted this to a list using the \texttt{list} function. However, in these examples by using the range object with the \texttt{for} statement directly, the range object is acting as a generator. This means that for each iteration of the \texttt{for} loop it generates the next number in the sequence. Since only one number at a time is held in memory as opposed to holding the whole list in memory, this increases efficiency when iterating through very large lists.
-		\begin{task}Write a program that asks the user for a number n and prints the sum of the numbers 1 to n.\end{task}
+		\begin{task}Write a program that asks the user for a number \textit{n} and prints the sum of the numbers 1 to \textit{n}.\end{task}
 		\begin{task}Modify the previous program so it only sums odd numbers from 1 to n.\end{task}
 
 		\subsubsection{While loops}
@@ -214,12 +214,14 @@ print("Yes, that's it.")\end{lstlisting}
 
 	\subsection{Imports}
 		Sometimes we want functions from another package that are not included in the basic Python set of functions. We can import these packages. Here we import the function \texttt{random} from the package \texttt{random} and then use it.
-		\begin{lstlisting}[language=Python]
+\begin{minipage}{\linewidth}		
+\begin{lstlisting}[language=Python]
 from random import random
 from math import pi
 
 print (random())
 print("Pi is: ", pi)\end{lstlisting}
+\end{minipage}
 		\begin{verbatim}
 > 0.29497908252
 > Pi is: 3.141592653589793\end{verbatim}
@@ -229,9 +231,13 @@ print("Pi is: ", pi)\end{lstlisting}
 		\begin{task}Write a for loop that will print out a random number between 0 and 5, 10 times.\end{task}
 		\begin{task}Write a for loop that will print out a random integer number between 4 and 10 (including 4 and 10) 5 times.\end{task}
 		\begin{task}Program a game of higher or lower. Generate a random integer between 1 and 100. Allow the user to input a guess and tell them if the guess is too high or too low until they guess correctly.\end{task}		
-
+	Some libraries (especially more niche ones) will have to be downloaded and installed separately. Anaconda Python (the Python distribution you have downloaded) is good because it comes with lots of the most popular packages pre-installed.
 	\subsection{Subroutines}
 			When programs begin to get larger it can be convenient to split the program up into smaller subsections as this makes the logic of the program easier to follow and makes the code easier to maintain. A subroutine, also commonly called a function, is a collection of code that is united under one title that can be ``called'' from elsewhere. Python has many built in functions like \texttt{input}, and \texttt{random}.
+
+In this example we crease a 1 line subroutine,
+
+\begin{minipage}{\paperwidth}
 			\begin{lstlisting}[language=Python]
 def hungarian_phrasebook():
 	print("My hovercraft is full of eels.")
@@ -241,8 +247,9 @@ for i in range(0, 2):
 			\begin{verbatim}> My hovercraft is full of eels
 			> My hovercraft is full of eels
 			\end{verbatim}
+\end{minipage}
 
-In this example lines 1 and 2 define the subroutine. The code in the subroutine does not run until it is called in line 4. When the program runs it first saves the subroutine \texttt{hungarian\_phrasebook} to memory and then begins executing the rest of the code on line 3. 
+Lines 1 and 2 define the subroutine but the code in the subroutine does not run until it is called in line 4. When the program runs it first saves the subroutine \texttt{hungarian\_phrasebook} to memory and then begins executing the rest of the code on line 3. 
 
 While this does break up the code somewhat, the subroutine is not very useful since it does exactly the same thing each time it is called. It would be much more useful if it could do different things depending on how we called it. This can be achieved by passing a value to the subroutine called an argument.
 
@@ -274,7 +281,7 @@ main()\end{lstlisting}
 				You can stack as many subroutines as you like, subroutines can call other subroutines and so on. Be careful about how readable your code is though, if you have layers upon layers of subroutines it can be very complex to understand the program flow and there is probably a better way to structure the code. 
 
 				Subroutines don't just have to print values. They can do some processing and then return the value to the parent subroutine using the \texttt{return} function.
-
+			\begin{minipage}{\linewidth}
 			\begin{lstlisting}[language=Python]
 def adding_six(input_value):
 	return input_value + 6
@@ -287,6 +294,7 @@ def main():
 	print(number_list)
 			
 main()\end{lstlisting}
+\end{minipage}
 
 			\begin{verbatim}> [18, 47, 15, 8]\end{verbatim}
 			We pass each value of ``number\_list'' into the subroutine \texttt{adding\_six} which adds six and then returns the value to be put back into ``number\_list'', replacing the original value. 
@@ -310,13 +318,15 @@ def main()
 main()\end{lstlisting}
 By importing the file \textit{analysis} in the first line, we can call any functions it contains as if they were in the same file. The syntax is the file name, a period (.) and then the function name.
 
-While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. Also important to organisation is adding comments. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids anyone who reads the code in understanding the function of a particular piece of code. Commenting code is another important coding habit.
+While this may seem a little complex at first, it is vital to keep code organised as it grows. This will save a lot of time later down the line. 
+
+Also important to organisation is adding comments. By proceeding a line with a hash (\#) we can insert text comments that are ignored by the Python processor. This aids anyone who reads the code in understanding the function of a particular piece of code. Commenting code is another important coding habit.
 \begin{task}Do the exercise in section \ref{LJ_excercise}.\end{task}
 \begin{advancedtask} Download a list of names from \url{https://merrygoat.github.io/sample_data_3.txt}. Sort these names into alphabetical order. Give each name a value by summing the letter values in the name where A = 1, B = 2... Z = 26. Multiply the name value by the position of the name in the list to get a score for each name. What is the total sum of all of the name scores?\end{advancedtask}
 
 \section{NumPy}
 	\subsection{NumPy arrays and vectorisation}
-	Computers are fast but not infinitely fast. This means that while trivial calculations can be done without concern for efficiency, more complex calculations such as simulations of hundreds or thousands of particles often need more care. Python is beautiful and easy to use but it is not the fastest programming language. This means that to do larger calculations we must take some consideration of the efficiency of the programming constructs that we use.
+	Computers are fast but not infinitely fast. This means that while trivial calculations can be done without concern for efficiency, more complex calculations such as simulations of thousands of particles often need more care. Python is beautiful and easy to use but it is not the fastest programming language. This means that to do larger calculations we must take some consideration of the efficiency of the programming constructs that we use.
 
 	A very simple way to add 1 to each value in a list would be to step through the list and add 1 to each value.
 	\begin{lstlisting}[language=Python]
@@ -332,7 +342,7 @@ end_time = time()
 print(end_time-start_time)\end{lstlisting}
 	\begin{verbatim}> 2.05770301819\end{verbatim}
 
-	Note the use of the \texttt{time} function in this example. This is a very simple way to assess the speed of code using the system clock. It is not the canonical way to measure performance but like many things in this short tutorial, it is simple and effective if not the best way to do it.
+	Note the use of the \texttt{time} function in this example. This is a very simple way to assess the speed of code using the system clock. It is not the canonical way to measure performance but like many things in this short tutorial, even if not the best way to do it, it is simple and effective.
 	If we think about it then that is fairly impressive, it has been through that loop 10,000,000 times in 2 seconds. But can we make it faster? One key concept in writing speedy code is vectorisation, instead of a loop we want to apply the transformation to every element in the list simultaneously. Let's try that:
 
 	\begin{lstlisting}[language=Python]
@@ -352,7 +362,7 @@ TypeError                                 Traceback (most recent call last)
 
 TypeError: can only concatenate list (not "int") to list\end{verbatim}
 
-	Basic Python doesn't understand vectorisation. Instead of adding one to each element in the list it is trying to add the number 1 onto the end of the list. This is where NumPy (short for numerical Python) comes in. It is a library that adds data structures and functions suited to mathematical operations. A NumPy array looks like a list but has some subtle differences.
+	Basic Python doesn't understand vectorisation. Instead of adding one to each element in the list it is trying to append the number 1 onto the end of the list. This is where NumPy (short for numerical Python) comes in. It is a library that adds data structures and functions suited to mathematical operations. A NumPy array looks like a list but has some subtle differences.
 
 	\begin{lstlisting}[language=Python]
 import numpy as np
